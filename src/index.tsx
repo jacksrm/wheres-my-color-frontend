@@ -1,18 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import {Initial} from './pages/Initial';
-import {Registration} from './pages/Registration';
-import {Login} from './pages/Login';
-import {Account} from './pages/Account';
-import {Home} from './pages/Home';
-import {MyHome} from './pages/My Home';
+import { App } from './app';
+import { BrowserRouter } from 'react-router-dom';
+
 
 import reportWebVitals from './reportWebVitals';
 
+import './index.css';
+
 ReactDOM.render(
   <React.StrictMode>
-    <Initial />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
