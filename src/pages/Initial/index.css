@@ -1,52 +1,82 @@
 body{
-    background-color: #E5E5E5;
+    background-color: #FFFFFF;
 }
-.Title{
-    width: 676px;
-    height: 94px;
-    font-size: 55px;
-    font-family: 'Roboto';
-    color: #000000;
-    margin: 40px;
-    margin-top: -3.5rem;
-}
-.Apresentation{
-    width: 304px;
-    height: 59px;
-    font-size: 35px;
-    font-family: 'Roboto';
-    color: #000000;
-    margin: 45px;
-}
-.Text{
-    width: 563px;
-    height: 30px;
-    font-size: 15px;
-    font-family: 'Roboto';
-    color: rgb(62, 63, 63);
-    margin: 45px;
-    margin-top: -45px;
-}
-.Try{
-    width: 150px;
-    height: 41px;
-    font-size: 25px;
-    font-family: 'Roboto';
-    color: #000000;
-    margin: 45px;
-    margin-top: 35px;
-}
+body::-webkit-scrollbar {
+    width: 12px;       
+  }
+  
+  body::-webkit-scrollbar-track {
+    background:#E5E5E5;  
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color:rgba(21, 60, 233, 0.774);   
+    border-radius: 20px;       
+    border: transparent;  
+  }
 .navbar{
     position: relative;
     width: 80em;
     margin-top: 3.5em;
 }
+.Title{
+    width: 700px;
+    height: 200px;
+
+    font-size: 120px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: bold;
+    line-height: 120px;
+
+    display: flex;
+    align-items: center;
+    color: #000000;
+    margin: 40px;
+    margin-top: 8rem;
+}
+.Apresentation{
+    width: 600px;
+    height: 92px;
+    margin: 45px;
+    
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 35px;
+    line-height: 119.69%;
+
+    display: flex;
+    align-items: center;
+    
+    color: #000000;
+}
+.Try{
+    width: 150px;
+    height: 41px;
+
+    font-size: 25px;
+    font-family: 'Roboto';
+    
+    color: #000000;
+    margin: 45px;
+    margin-top: 30px;
+}
+/* Tamanho de tela padrão, deixar responsivo */
 .image-container{
-    position: fixed;
-    margin-left: 68%;
-    margin-top: -0.1rem;
+    position: absolute;
+    margin-left: 41.7%;
+    margin-top: -27.1rem;
 }
 .image{
-    width: 300pt;
-    height: 400pt;
+    width: 926px;
+    height: 926px;
+}
+.border-div{
+    border-style: solid;
+    border-bottom-width: 10px;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-left-width: 0;
+    margin-top: 205px;     
 }

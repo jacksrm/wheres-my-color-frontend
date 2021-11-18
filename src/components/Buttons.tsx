@@ -1,64 +1,45 @@
 import styled from 'styled-components';
 
-const ButtonRegister = styled.button`
-    background-color: #67D66C;
-    color: #FFFFFF;
-    border-radius: 45px;
+const ButtonSimple = styled.button`
+    position: absolute;
     border-color: transparent;
-    width: 160px;
+    background-color: transparent;
+    color: #000000;
+    width: 260px;
     height: 50px;
-    margin: 40px;
-    margin-top: 50px;
-    font-size: 17px;
-    cursor: pointer;
 
-    &:hover{
-        background-color:#0b350e; 
-    }
+    font-size: 17px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+
+    cursor: pointer;
+    margin: -322px;
+    margin-top: 35px;
 `;
 
-const ButtonLogin = styled.button`
-    background-color: transparent;
-    border-radius: 45px;
-    border-color: #B3B1B1;
-    color: #333232;
-    width: 140px;
+const ButtonCustom = styled.button`
+    background-color: #1567E3;
+    border-radius: 17px;
+    border-color: transparent;
+    color: #FFFFFF;
+    mix-blend-mode: darken;
+
+    width: 280px;
     height: 50px;
-    font-size: 17px;
+    font-size: 20px;
+
     cursor: pointer;
-    margin-left: 100%;
+    margin: 45px;
+    margin-top: -45px;
 
     &:hover{
         background-color:#9A9797; 
         border-color: transparent;
-        color: #FFFFFF;
-    }
-`;
-
-const ButtonTry = styled.button`
-    background-color: transparent;
-    border-radius: 10px;
-    border-color: #B3B1B1;
-    color: #B3B1B1;
-    border-style: dashed;
-    width: 100px;
-    height: 100px;
-    margin: 40px;
-    margin-top: -35px;
-    font-size: 70px;
-    font-family: 'Roboto';
-    cursor: pointer;
-
-    
-    &:hover{
-        background-color:#9A9797; 
-        border-color: transparent;
-        color: #FFFFFF;
     }
 `;
 
 export {
-    ButtonRegister,
-    ButtonLogin,
-    ButtonTry
+    ButtonSimple,
+    ButtonCustom
 }

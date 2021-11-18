@@ -1,7 +1,7 @@
 import './index.css';
 import React from 'react';
 
-export class Home extends React.Component {
+export class MyHome extends React.Component {
     render() {
         return (
             <div>
