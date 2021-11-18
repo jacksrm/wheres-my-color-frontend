@@ -2,6 +2,6 @@ import { FC } from 'react';
 
 import './index.css';
 
-export const Home: FC = () => {
+export const MyHome: FC = () => {
   return <div></div>;
 };
