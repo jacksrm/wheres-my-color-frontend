@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
 import { ButtonSimple, ButtonCustom } from '../../components/Buttons';
 import logo from '../../images/logo.png';
 
@@ -7,9 +8,10 @@ import './index.css';
 export const Login: FC = () => {
   return (
     <div>
-      <img className="image-logo" src={logo} alt="logo" />
+      <a href="http://localhost:3000/"> <img className="image-logo-login" src={logo} alt="logo" /> </a>
+      
       <div className="login-account">
-        <p className="title">Login</p>
+        <p className="title-login">Login</p>
 
         <form action="/" method="">
           <input type="email" name="" placeholder="Email" required autoFocus />
@@ -21,18 +23,16 @@ export const Login: FC = () => {
             autoFocus
           />
 
-          <div className="btn">
+          <div className="btn-login">
             <ButtonCustom>PRONTO</ButtonCustom>
-            <ButtonSimple>
-              Não tem uma conta? <b>Cadastre-se</b>
-            </ButtonSimple>
+            <Link to="/create">
+              <ButtonSimple> Não tem uma conta? <b>Cadastre-se</b></ButtonSimple>
+            </Link>
           </div>
         </form>
       </div>
       <svg
         className="border-page"
-        width="1600"
-        height="100"
         viewBox="0 0 1921 83"
         fill="none"
         xmlns="http://www.w3.org/2000/svg">

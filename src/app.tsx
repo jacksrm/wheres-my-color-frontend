@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FC } from 'react'
 import {Initial} from './pages/Initial';
 import {Registration} from './pages/Registration';
 import {Login} from './pages/Login';
@@ -7,7 +7,7 @@ import {Home} from './pages/Home';
 import {MyHome} from './pages/MyHome';
 import { Routes, Route } from 'react-router-dom';
 
-export const App: FunctionComponent = () => {
+export const App: FC = () => {
   return (
     <>
       <Routes>

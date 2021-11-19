@@ -11,15 +11,15 @@ body{
     margin-top: 190px;
     left: 50%;
 }
-.image-logo{
+.image-logo-login{
     position: absolute;
     width: 74.67px;
     height: 73.69px;
     margin: -38px;
     margin-top: 130px;
-    left: 50%;
+    left: 49.8%;
 }
-.title{
+.title-login{
     position: absolute;
     width: 288px;
     height: 46px;
@@ -36,12 +36,12 @@ body{
 
     color: #737373;
 }
-form {
+.login-account form {
 	position: relative;
     margin-top: 120px;
     margin-left: -70px;
 }
-input{
+.login-account input {
     display: flex;
     background: #F8F8F8;
     mix-blend-mode: darken;
@@ -59,7 +59,7 @@ input{
 	font-size: 18px;
 	color: black;	
 }
-.btn{
+.btn-login{
     margin-top: 40px;
     margin-left: 30px;
 }
