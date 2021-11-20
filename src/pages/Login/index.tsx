@@ -1,11 +1,28 @@
-import { FC } from 'react';
-import { Link } from 'react-router-dom';
+import { FC, FormEvent, useContext, useState } from 'react';
 import { ButtonSimple, ButtonCustom } from '../../components/Buttons';
+import { LoginContext } from '../../context/LoginProvider';
 import logo from '../../images/logo.png';
 
 import './index.css';
 
 export const Login: FC = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState<string[]>([]);
+  const { logIn } = useContext(LoginContext);
+
+  const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      await logIn({ email, password });
+    } catch (error) {
+      if (error.response) {
+        setErrors((prev) => [...prev, error.response.data.message]);
+      }
+    }
+  };
+
   return (
     <div>
       <a href="http://localhost:3000/"> <img className="image-logo-login" src={logo} alt="logo" /> </a>
@@ -13,18 +30,26 @@ export const Login: FC = () => {
       <div className="login-account">
         <p className="title-login">Login</p>
 
-        <form action="/" method="">
-          <input type="email" name="" placeholder="Email" required autoFocus />
+        <form onSubmit={handleLogin}>
+          {errors.map((error) => (
+            <p>{error}</p>
+          ))}
           <input
-            type="password"
-            name=""
-            placeholder="Senha"
+            onChange={(e) => setEmail(e.target.value)}
+            type="email"
+            placeholder="Email"
             required
             autoFocus
           />
+          <input
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
+            placeholder="Senha"
+            required
+          />
 
-          <div className="btn-login">
-            <ButtonCustom>PRONTO</ButtonCustom>
+          <div className="btn">
+            <ButtonCustom type="submit">PRONTO</ButtonCustom>
             <Link to="/create">
               <ButtonSimple> Não tem uma conta? <b>Cadastre-se</b></ButtonSimple>
             </Link>
