@@ -43,6 +43,8 @@ export const LoginProvider: FC = ({ children }) => {
   }, [token]);
 
   return (
-    <LoginContext.Provider value={context}>{children}</LoginContext.Provider>
+    <LoginContext.Provider value={context}>
+      {children}
+    </LoginContext.Provider>
   );
 };
