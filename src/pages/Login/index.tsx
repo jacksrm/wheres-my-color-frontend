@@ -1,4 +1,6 @@
-import { FC, FormEvent, useContext, useState } from 'react';
+import {
+  FC, FormEvent, useContext, useState,
+} from 'react';
 import { Link } from 'react-router-dom';
 import { ButtonSimple, ButtonCustom } from '../../components/Buttons';
 import { LoginContext } from '../../context/LoginProvider';
@@ -19,15 +21,19 @@ export const Login: FC = () => {
       await logIn({ email, password });
     } catch (error) {
       if (error.response) {
-        setErrors((prev) => [...prev, error.response.data.message]);
+        setErrors([error.response.data.message]);
       }
     }
   };
 
   return (
     <div>
-      <a href="http://localhost:3000/"> <img className="image-logo-login" src={logo} alt="logo" /> </a>
-      
+      <a href="http://localhost:3000/">
+        {' '}
+        <img className="image-logo-login" src={logo} alt="logo" />
+        {' '}
+      </a>
+
       <div className="login-account">
         <p className="title-login">Login</p>
 
@@ -52,7 +58,12 @@ export const Login: FC = () => {
           <div className="btn">
             <ButtonCustom type="submit">PRONTO</ButtonCustom>
             <Link to="/create">
-              <ButtonSimple> Não tem uma conta? <b>Cadastre-se</b></ButtonSimple>
+              <ButtonSimple>
+                {' '}
+                Não tem uma conta?
+                {' '}
+                <b>Cadastre-se</b>
+              </ButtonSimple>
             </Link>
           </div>
         </form>
@@ -61,7 +72,8 @@ export const Login: FC = () => {
         className="border-page"
         viewBox="0 0 1921 83"
         fill="none"
-        xmlns="http://www.w3.org/2000/svg">
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <rect x="0.659668" y="0.366211" width="82" height="82" fill="#181818" />
         <rect x="1532.66" y="0.366211" width="82" height="82" fill="#181818" />
         <rect x="263.015" y="0.366211" width="82" height="82" fill="#545454" />

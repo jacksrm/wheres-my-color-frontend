@@ -8,7 +8,6 @@ import './index.css';
 export const Registration: FC = () => {
   return (
     <div>
-
       <div className="border-page-image">
         <svg width="618" height="1081" viewBox="0 0 618 1081" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M369.599 0.19043H0.659668V115.216V195.69V867.69V884.69V927.165V1040.19V1080.19H369.599V1040.19H371.015V867.69H370.909V799.883C431.749 796.547 491.66 771.82 538.413 725.629C589.551 675.107 615.203 608.535 615.272 541.912L615.457 541.913L617.016 284.465L370.909 282.975V115.216H369.599V0.19043ZM370.909 282.975L359.568 282.906L359.567 283.048C292.934 282.299 226.039 307.143 174.89 357.676C73.2822 458.06 72.2905 621.807 172.675 723.414C226.868 778.268 299.528 803.798 370.909 799.883V282.975Z" fill="#181818"/>
@@ -20,7 +19,7 @@ export const Registration: FC = () => {
 
       <div className="create-account">
         <a href="http://localhost:3000/"> <img className="image-logo-create" src={logo} alt="logo" /></a>
-        
+
         <p className="title-create">Criar uma conta</p>
         <form action="/" method="">
           <input type="text" name="" placeholder="Nome" required autoFocus />
