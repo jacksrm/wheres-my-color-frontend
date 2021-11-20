@@ -19,9 +19,9 @@ export const Login: FC = () => {
       await logIn({ email, password });
     } catch (error) {
       if (error.response) {
-        setErrors((prev) => [...prev, error.response.data.message]);
+        setErrors([error.response.data.message]);
       }
-    }
+    }                                   
   };
 
   return (
