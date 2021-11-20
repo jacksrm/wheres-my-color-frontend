@@ -1,5 +1,5 @@
 import { FC, FormEvent, useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ButtonSimple, ButtonCustom } from '../../components/Buttons';
 import { LoginContext } from '../../context/LoginProvider';
 import logo from '../../images/logo.png';
@@ -11,12 +11,13 @@ export const Login: FC = () => {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<string[]>([]);
   const { logIn } = useContext(LoginContext);
-
+  const navigate = useNavigate();
   const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
       await logIn({ email, password });
+      navigate('/MyHome');
     } catch (error) {
       if (error.response) {
         setErrors([error.response.data.message]);
@@ -47,9 +48,10 @@ export const Login: FC = () => {
             type="password"
             placeholder="Senha"
             required
+            autoFocus
           />
 
-          <div className="btn">
+          <div className="btn-login">
             <ButtonCustom type="submit">PRONTO</ButtonCustom>
             <Link to="/create">
               <ButtonSimple> Não tem uma conta? <b>Cadastre-se</b></ButtonSimple>
