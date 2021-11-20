@@ -1,30 +1,56 @@
-import { FC } from 'react';
+import { FC, FormEvent, useContext, useState } from 'react';
 import { ButtonSimple, ButtonCustom } from '../../components/Buttons';
+import { LoginContext } from '../../context/LoginProvider';
 import logo from '../../images/logo.png';
 
 import './index.css';
 
 export const Login: FC = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState<string[]>([]);
+  const { logIn } = useContext(LoginContext);
+
+  const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      await logIn({ email, password });
+    } catch (error) {
+      if (error.response) {
+        setErrors((prev) => [...prev, error.response.data.message]);
+      }
+    }
+  };
+
   return (
     <div>
       <img className="image-logo" src={logo} alt="logo" />
       <div className="login-account">
         <p className="title">Login</p>
 
-        <form action="/" method="">
-          <input type="email" name="" placeholder="Email" required autoFocus />
+        <form onSubmit={handleLogin}>
+          {errors.map((error) => (
+            <p>{error}</p>
+          ))}
           <input
-            type="password"
-            name=""
-            placeholder="Senha"
+            onChange={(e) => setEmail(e.target.value)}
+            type="email"
+            placeholder="Email"
             required
             autoFocus
           />
+          <input
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
+            placeholder="Senha"
+            required
+          />
 
           <div className="btn">
-            <ButtonCustom>PRONTO</ButtonCustom>
+            <ButtonCustom type="submit">PRONTO</ButtonCustom>
             <ButtonSimple>
-              Não tem uma conta? <b>Cadastre-se</b>
+              Não tem uma conta? <strong>Cadastre-se</strong>
             </ButtonSimple>
           </div>
         </form>
