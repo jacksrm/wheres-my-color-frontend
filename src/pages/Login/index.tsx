@@ -1,7 +1,7 @@
 import {
   FC, FormEvent, useContext, useState,
 } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ButtonSimple, ButtonCustom } from '../../components/Buttons';
 import { LoginContext } from '../../context/LoginProvider';
 import logo from '../../images/logo.png';
@@ -12,27 +12,31 @@ export const Login: FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<string[]>([]);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const { logIn } = useContext(LoginContext);
 
-  const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
+  const handleLogin = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    try {
-      await logIn({ email, password });
-    } catch (error) {
-      if (error.response) {
+    setLoading(true);
+    logIn({ email, password })
+      .catch((error) => {
         setErrors([error.response.data.message]);
-      }
-    }
+      })
+      .finally(() => {
+        setLoading(false);
+        navigate('/MyHome');
+      });
   };
 
   return (
     <div>
-      <a href="http://localhost:3000/">
+      <Link to="/">
         {' '}
         <img className="image-logo-login" src={logo} alt="logo" />
         {' '}
-      </a>
+      </Link>
 
       <div className="login-account">
         <p className="title-login">Login</p>
@@ -43,20 +47,23 @@ export const Login: FC = () => {
           ))}
           <input
             onChange={(e) => setEmail(e.target.value)}
+            value={email}
             type="email"
             placeholder="Email"
             required
-            autoFocus
           />
           <input
             onChange={(e) => setPassword(e.target.value)}
+            value={password}
             type="password"
             placeholder="Senha"
             required
           />
 
           <div className="btn">
-            <ButtonCustom type="submit">PRONTO</ButtonCustom>
+            <ButtonCustom disabled={loading} type="submit">
+              { loading ? 'CARREGANDO' : 'PRONTO' }
+            </ButtonCustom>
             <Link to="/create">
               <ButtonSimple>
                 {' '}

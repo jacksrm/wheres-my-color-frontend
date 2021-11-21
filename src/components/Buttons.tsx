@@ -33,6 +33,13 @@ const ButtonCustom = styled.button`
   margin: 45px;
   margin-top: -45px;
 
+  transition: background-color 200ms;
+
+  &:disabled {
+    background-color: #9a9797;
+    border-color: transparent;
+  }
+
   &:hover {
     background-color: #9a9797;
     border-color: transparent;
