@@ -14,7 +14,7 @@ export const LoginProvider: FC = ({ children }) => {
     setToken(response.data.token);
   };
 
-  const context = useMemo<ILoginContext>(() => ({
+  const context = useMemo(() => ({
     token,
     logIn,
   }), [token]);

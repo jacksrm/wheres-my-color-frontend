@@ -21,16 +21,13 @@ export const UserProvider: FC = ({ children }) => {
 
   const { token } = useContext(LoginContext);
 
-  const context = useMemo<IUserContext>(
-    () => ({
-      profilePicture,
-      userId,
-      email,
-      username,
-      createdAt,
-    }),
-    [profilePicture, userId, email, username, createdAt],
-  );
+  const context = useMemo(() => ({
+    profilePicture,
+    userId,
+    email,
+    username,
+    createdAt,
+  }), [createdAt, email, profilePicture, userId, username]);
 
   useEffect(() => {
     if (token) {
