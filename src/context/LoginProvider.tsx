@@ -1,6 +1,5 @@
-/* eslint-disable react/jsx-no-constructed-context-values */
 import {
-  createContext, FC, useState,
+  createContext, FC, useMemo, useState,
 } from 'react';
 import { wmcApi } from '../api';
 import { ILoginContext, ILoginData } from '../types';
@@ -15,10 +14,10 @@ export const LoginProvider: FC = ({ children }) => {
     setToken(response.data.token);
   };
 
-  const context = {
+  const context = useMemo(() => ({
     token,
     logIn,
-  };
+  }), [token]);
 
   return (
     <LoginContext.Provider value={context}>{children}</LoginContext.Provider>
