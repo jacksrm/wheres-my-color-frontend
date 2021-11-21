@@ -1,13 +1,21 @@
+import {
+  FC,
+  FormEvent,
+  useContext,
+  useState,
+} from 'react';
 import { wmcApi } from 'api';
 import { LoginContext } from 'context/LoginProvider';
-import {
-  FC, FormEvent, useContext, useState,
-} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import md5 from 'md5';
+
 import { ButtonSimple, ButtonCustom } from '../../components/Buttons';
+
 import logo from '../../images/logo.png';
 
 import './index.css';
+
+const hashEmail = (email: string) => md5(email);
 
 export const Registration: FC = () => {
   const [username, setUsername] = useState('');
@@ -22,7 +30,12 @@ export const Registration: FC = () => {
 
     setLoading(true);
     wmcApi
-      .post('user/create', { username, email, password })
+      .post('user/create', {
+        username,
+        email,
+        password,
+        profilePicture: `https://www.gravatar.com/avatar/${hashEmail(email)}.png?s=100&d=identicon`,
+      })
       .then(() => logIn({ email, password }))
       .finally(() => {
         setLoading(false);
@@ -86,7 +99,7 @@ export const Registration: FC = () => {
             required
           />
           <input
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value.trim().toLowerCase())}
             value={email}
             type="email"
             placeholder="Email"

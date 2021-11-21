@@ -3,7 +3,6 @@ import {
   FC,
   useContext,
   useEffect,
-  useMemo,
   useState,
 } from 'react';
 import { wmcApi } from '../api';
@@ -21,16 +20,14 @@ export const UserProvider: FC = ({ children }) => {
 
   const { token } = useContext(LoginContext);
 
-  const context = useMemo<IUserContext>(
-    () => ({
-      profilePicture,
-      userId,
-      email,
-      username,
-      createdAt,
-    }),
-    [profilePicture, userId, email, username, createdAt],
-  );
+  // eslint-disable-next-line react/jsx-no-constructed-context-values
+  const context = {
+    profilePicture,
+    userId,
+    email,
+    username,
+    createdAt,
+  };
 
   useEffect(() => {
     if (token) {
