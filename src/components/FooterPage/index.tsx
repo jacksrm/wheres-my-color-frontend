@@ -5,7 +5,7 @@ import './index.css';
 export const FooterPage: FC = () => (
   <div>
     <footer className="footer">
-      <div className="About">
+      <section className="About">
         <h6>About</h6>
         <p className="text-justify">
           Projeto desenvolvido na
@@ -24,16 +24,16 @@ export const FooterPage: FC = () => (
           <a href="http://">Matheus Rodrigues</a>
           .
         </p>
-      </div>
+      </section>
 
-      <div className="copyright">
+      <section className="copyright">
         <p className="copyright-text">
           Copyright &copy; 2021 All Rights Reserved by
           <br />
           <a href="http://">Where’s My Collor? Project</a>
           .
         </p>
-      </div>
+      </section>
     </footer>
   </div>
 );

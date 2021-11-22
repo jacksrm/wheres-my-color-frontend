@@ -8,9 +8,9 @@ import './index.css';
 
 export const Initial: FC = () => (
   <div>
-    <div className="navbar">
+    <header className="navbar">
       <h2 className="Title">Where’s My Collor?</h2>
-    </div>
+    </header>
 
     <div className="image-container">
       <img className="image" src={illustration} alt="illustration" />
@@ -22,10 +22,10 @@ export const Initial: FC = () => (
     </p>
 
     <Link to="/login">
-      <ButtonCustom type="submit">LOGIN</ButtonCustom>
+      <ButtonCustom>LOGIN</ButtonCustom>
     </Link>
     <Link to="/create">
-      <ButtonSimple type="submit">
+      <ButtonSimple>
         Não tem conta?
         {' '}
         <b>Cadastre-se</b>
