@@ -27,6 +27,8 @@
     "react/function-component-definition": "off" ,
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
+    "linebreak-style": 0,
+    
     "react/jsx-filename-extension": [
       1,
       {
