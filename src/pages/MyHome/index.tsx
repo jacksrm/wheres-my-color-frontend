@@ -6,9 +6,7 @@ import './index.css';
 export const MyHome: FC = () => {
   return (
     <div>
-      <Header>
-        
-      </Header>
+      <Header />
     </div>
   );
 };
