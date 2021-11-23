@@ -82,7 +82,7 @@ export const Login: FC = () => {
             required
           />
 
-          <div className="btn">
+          <div className="btn-login">
             <ButtonCustom disabled={loading} type="submit">
               { loading ? 'CARREGANDO' : 'PRONTO' }
             </ButtonCustom>
