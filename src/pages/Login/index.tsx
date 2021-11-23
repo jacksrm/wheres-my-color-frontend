@@ -1,4 +1,6 @@
-import { FC, FormEvent, useContext, useState } from 'react';
+import {
+  FC, FormEvent, useContext, useState,
+} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ButtonSimple, ButtonCustom } from '../../components/Buttons';
 import { LoginContext } from '../../context/LoginProvider';
@@ -10,26 +12,56 @@ export const Login: FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<string[]>([]);
-  const { logIn } = useContext(LoginContext);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
+  const { logIn } = useContext(LoginContext);
+
+  const navigate = useNavigate();                                
+  const handleLogin = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    try {
-      await logIn({ email, password });
-      navigate('/MyHome');
-    } catch (error) {
-      if (error.response) {
+    setLoading(true);
+    logIn({ email, password })
+      .catch((error) => {
         setErrors([error.response.data.message]);
-      }
-    }                                   
+      })
+      .finally(() => {
+        setLoading(false);
+        navigate('/MyHome');
+      });
   };
+
+  const renderSVG = () => (
+    <svg
+      className="border-page"
+      viewBox="0 0 1921 83"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect x="0.659668" y="0.366211" width="82" height="82" fill="#181818" />
+      <rect x="1532.66" y="0.366211" width="82" height="82" fill="#181818" />
+      <rect x="263.015" y="0.366211" width="82" height="82" fill="#545454" />
+      <rect x="374.66" y="0.366211" width="82" height="82" fill="#737373" />
+      <rect x="830.66" y="0.366211" width="82" height="82" fill="#181818" />
+      <rect x="912.66" y="0.366211" width="82" height="82" fill="#737373" />
+      <rect x="456.66" y="0.366211" width="82" height="82" fill="#181818" />
+      <rect x="994.66" y="0.366211" width="246" height="82" fill="#181818" />
+      <rect x="538.66" y="0.366211" width="292" height="82" fill="#545454" />
+      <rect x="1240.66" y="0.366211" width="292" height="82" fill="#545454" />
+      <rect x="82.6597" y="0.366211" width="292" height="82" fill="#181818" />
+      <rect x="1614.66" y="0.366211" width="306" height="82" fill="#181818" />
+    </svg>
+  );
 
   return (
     <div>
-      <a href="http://localhost:3000/"> <img className="image-logo-login" src={logo} alt="logo" /> </a>
-      
-      <div className="login-account">
+      <Link to="/">
+        {' '}
+        <img className="image-logo-login" src={logo} alt="logo" />
+        {' '}
+      </Link>
+
+      <section className="login-account">
         <p className="title-login">Login</p>
 
         <form onSubmit={handleLogin}>
@@ -38,13 +70,14 @@ export const Login: FC = () => {
           ))}
           <input
             onChange={(e) => setEmail(e.target.value)}
+            value={email}
             type="email"
             placeholder="Email"
             required
-            autoFocus
           />
           <input
             onChange={(e) => setPassword(e.target.value)}
+            value={password}
             type="password"
             placeholder="Senha"
             required
@@ -52,31 +85,21 @@ export const Login: FC = () => {
           />
 
           <div className="btn-login">
-            <ButtonCustom type="submit">PRONTO</ButtonCustom>
+            <ButtonCustom disabled={loading} type="submit">
+              { loading ? 'CARREGANDO' : 'PRONTO' }
+            </ButtonCustom>
             <Link to="/create">
-              <ButtonSimple> Não tem uma conta? <b>Cadastre-se</b></ButtonSimple>
+              <ButtonSimple>
+                {' '}
+                Não tem uma conta?
+                {' '}
+                <strong>Cadastre-se</strong>
+              </ButtonSimple>
             </Link>
           </div>
         </form>
-      </div>
-      <svg
-        className="border-page"
-        viewBox="0 0 1921 83"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg">
-        <rect x="0.659668" y="0.366211" width="82" height="82" fill="#181818" />
-        <rect x="1532.66" y="0.366211" width="82" height="82" fill="#181818" />
-        <rect x="263.015" y="0.366211" width="82" height="82" fill="#545454" />
-        <rect x="374.66" y="0.366211" width="82" height="82" fill="#737373" />
-        <rect x="830.66" y="0.366211" width="82" height="82" fill="#181818" />
-        <rect x="912.66" y="0.366211" width="82" height="82" fill="#737373" />
-        <rect x="456.66" y="0.366211" width="82" height="82" fill="#181818" />
-        <rect x="994.66" y="0.366211" width="246" height="82" fill="#181818" />
-        <rect x="538.66" y="0.366211" width="292" height="82" fill="#545454" />
-        <rect x="1240.66" y="0.366211" width="292" height="82" fill="#545454" />
-        <rect x="82.6597" y="0.366211" width="292" height="82" fill="#181818" />
-        <rect x="1614.66" y="0.366211" width="306" height="82" fill="#181818" />
-      </svg>
+      </section>
+      {renderSVG()}
     </div>
   );
 };
