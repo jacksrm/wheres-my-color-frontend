@@ -1,38 +1,25 @@
 import styled from 'styled-components';
 
 const ButtonSimple = styled.button`
-  position: absolute;
   border-color: transparent;
   background-color: transparent;
-  color: #000000;
-  width: 260px;
-  height: 50px;
-
-  font-size: 17px;
-  font-family: Roboto;
+  color: #181818;
+  font-size: 1rem;
   font-style: normal;
   font-weight: normal;
-
   cursor: pointer;
-  margin: -322px;
-  margin-top: 35px;
 `;
 
 const ButtonCustom = styled.button`
   background-color: #1567e3;
   border-radius: 17px;
   border-color: transparent;
-  color: #ffffff;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  color: whitesmoke;
   mix-blend-mode: darken;
-
-  width: 280px;
-  height: 50px;
-  font-size: 20px;
-
+  padding: 10px 100px;
+  font-size: 1.3rem;
   cursor: pointer;
-  margin: 45px;
-  margin-top: -45px;
-
   transition: background-color 200ms;
 
   &:disabled {

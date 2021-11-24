@@ -1,58 +1,56 @@
-body{
-    background-color: #FFFFFF;
+.border-page {
+  margin-top: -18px;
 }
-.border-page{
-    margin-top: -18px;
+.account {
+  position: absolute;
+  display: flex;
+  margin: -150px;
+  margin-top: 150px;
+  left: 50%;
 }
-.account{
-    position: absolute;
-    display: flex;
-    margin: -150px;
-    margin-top: 150px;
-    left: 50%;
-}
-.title{
-    position: absolute;
-    width: 288px;
-    height: 46px;
-    margin-left: 23px;
+.title {
+  position: absolute;
+  width: 288px;
+  height: 46px;
+  margin-left: 23px;
 
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 40px;
-    line-height: 119.69%;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 119.69%;
 
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 
-    color: #737373;
+  color: #737373;
 }
 form {
-	position: relative;
-    margin-top: 120px;
-    margin-left: -70px;
+  position: relative;
+  margin-top: 120px;
+  margin-left: -70px;
 }
-input{
-    display: flex;
-    background: #F8F8F8;
-    mix-blend-mode: darken;
-	appearance: none;
-	outline: 0;	
-	width: 400px;
-		
-	border-radius: 100px;
-    border: transparent;
-	padding: 10px 15px;
-	margin: 0 auto 18px auto;
+input {
+  display: flex;
+  background: #f8f8f8;
+  mix-blend-mode: darken;
+  appearance: none;
+  outline: 0;
+  width: 400px;
 
-	text-align: center;
-	font-weight: 300;
-	font-size: 18px;
-	color: black;	
+  border-radius: 100px;
+  border: transparent;
+  padding: 10px 15px;
+  margin: 0 auto 18px auto;
+
+  text-align: center;
+  font-weight: 300;
+  font-size: 18px;
+  color: black;
 }
-.btn{
-    margin-top: 40px;
-    margin-left: 30px;
+.btn {
+  margin-top: 40px;
+  margin-left: 30px;
 }
-.profile{}
+.profile {
+}
