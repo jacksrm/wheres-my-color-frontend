@@ -81,6 +81,7 @@ export const Login: FC = () => {
             <img className="loading" src={AnimationLoading} alt="logo carregando" />
           ) : (
             <ButtonCustom disabled={loading} type="submit">
+              {loading ? 'CARREGANDO' : 'PRONTO'}
               PRONTO
             </ButtonCustom>
           )}

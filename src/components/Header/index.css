@@ -1,104 +1,93 @@
-.header{
-    position: absolute;
-    width: 100%;
-    height: 80px;
-    background: #181818;
+.header {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 60px;
+  background: #181818;
 }
-.header h1{
-    position: absolute;
-    width: 468.66px;
-    height: 30.57px;
-
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 40px;
-    line-height: 119.69%;
-
-    margin: 25px;
-    margin-left: 440px;
-
-    display: flex;
-    align-items: center;
-    text-align: center;
-
-    color: #F8F8F8;
+.header h1 {
+  position: absolute;
+  font-style: normal;
+  font-size: 2rem;
+  padding: 0px 500px;
+  color: #f8f8f8;
 }
-.header .image{
-    position: absolute;
-    width: 52px;
-    height: 50px;
-    margin: 15px;
+.header .image {
+  width: 54px;
+  height: 54px;
+
+  padding: 5px 0px 0px 25px;
 }
+.header .btn {
+  position: absolute;
+  background: white;
+  border: transparent;
+  border-radius: 50px;
+  cursor: pointer;
 
-.toggle {
-    display: block;
-    background: white;
-    border: transparent;
-    border-radius: 50px;
-    cursor: pointer;
-
-    width: 52px;
-    height: 50px;
-    margin: 15px;
-    margin-left: 1250px;
-
+  margin: 25px;
+  padding: 0px 0px 0px 4px;
+  right: 0;
 }
-.nameUser{
-    color: #999;
-} 
-.lineName{
-    position: absolute;
-    width: 200px;
-    height: 3.51px;
-    margin-top: -10px;
-
-    background: #545454;
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
-    border-radius: 100px;
-} 
-.menu{
-    position: absolute;
-    color: #999;color: #999;
-    width: 200px;
-    padding: 10px;
-    margin: auto;
-    font-family: "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif;
-    text-align: center;
-    border-radius: 4px;
-    background: white;
-    box-shadow: 0 1px 8px rgba(0,0,0,0.05);
-    margin-left: 1090px;
-
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity .4s;
+.header .profile {
+  width: 52px;
+  height: 50px;
 }
-.close{
-    background: transparent;
-    border: transparent;
-    color: #999;
-    margin-left: 80%;
+.header .nameUser {
+  color: #999;
+}
+.header .lineName {
+  position: absolute;
+  width: 200px;
+  height: 3px;
+  margin-top: -10px;
 
+  background: #545454;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
 }
-.close:hover{
-    background: #1ABC9C;
-    color: #fff;
+.header .menu {
+  position: absolute;
+  color: #999;
+  width: 200px;
+
+  text-align: center;
+  border-radius: 4px;
+  background: white;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
+  margin-left: 1090px;
+  margin-top: 180px;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s;
 }
-.menu ul, li, li a {
+.header .menu ul,
+li,
+li a {
   list-style: none;
   display: block;
   margin: 10;
   padding: 0;
 }
-.menu li a {
+.header .menu li a {
   padding: 5px;
   color: #888;
   text-decoration: none;
-  transition: all .2s;
+  transition: all 0.2s;
 }
-.menu li a:hover,
-.menu li a:focus {
-  background: #1ABC9C;
+.header .menu li a:hover,
+.header .menu li a:focus {
+  background: #1567e3;
+  color: #fff;
+}
+.header .close {
+  background: transparent;
+  border: transparent;
+  color: #999;
+  margin-left: 80%;
+}
+.header .close:hover {
+  background: #1567e3;
   color: #fff;
 }

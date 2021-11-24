@@ -32,5 +32,6 @@ const ButtonCustom = styled.button`
     border-color: transparent;
   }
 `;
+const Button = styled.button``;
 
-export { ButtonSimple, ButtonCustom };
+export { ButtonSimple, ButtonCustom, Button };
