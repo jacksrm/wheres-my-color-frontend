@@ -1,65 +1,74 @@
-body{
-    background-color: #FFFFFF;
+.login {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.border-page{
-    margin-top: -18px;
-}
-.login-account{
-    position: absolute;
-    display: flex;
-    margin: -150px;
-    margin-top: 190px;
-    left: 50%;
-}
-.image-logo-login{
-    position: absolute;
-    width: 74.67px;
-    height: 73.69px;
-    margin: -38px;
-    margin-top: 130px;
-    left: 49.8%;
-}
-.title-login{
-    position: absolute;
-    width: 288px;
-    height: 46px;
-    margin-left: 95px;
 
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 40px;
-    line-height: 119.69%;
-
-    display: flex;
-    align-items: center;
-
-    color: #737373;
+.login .login-account {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.login-account form {
-	position: relative;
-    margin-top: 120px;
-    margin-left: -70px;
-}
-.login-account input {
-    display: flex;
-    background: #F8F8F8;
-    mix-blend-mode: darken;
-	appearance: none;
-	outline: 0;	
-	width: 400px;
-		
-	border-radius: 100px;
-    border: transparent;
-	padding: 10px 15px;
-	margin: 0 auto 18px auto;
 
-	text-align: center;
-	font-weight: 300;
-	font-size: 18px;
-	color: black;	
+.login .image-logo-login {
+  width: 74px;
+  height: 74px;
 }
-.btn-login{
-    margin-top: 40px;
-    margin-left: 30px;
+
+.login .title-login {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2.5rem;
+  color: #737373;
+}
+
+.login .login-account form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login .login-account input {
+  display: flex;
+  background: #ebebeb;
+  box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.15);
+  appearance: none;
+  outline: 0;
+  width: 400px;
+
+  border-radius: 100px;
+  border: none;
+  padding: 10px 15px;
+
+  text-align: center;
+  font-weight: 400;
+  font-size: 1.2rem;
+  color: #181818;
+}
+
+.login .login-account input::placeholder {
+  color: #C4C4C4;
+}
+
+.login .loading {
+  margin-bottom: 10px;
+}
+
+.login .login-account button {
+  margin-bottom: 10px;
+}
+
+.login .error {
+  color: #FF5959;
+}
+
+.login .border-page {
+  width: 100vw;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
