@@ -82,10 +82,10 @@ export const Registration: FC = () => {
     <main>
       <div className="border-page-image">{renderSVG()}</div>
 
-      <div className="create-account">
-        <a href="http://localhost:3000/">
+      <section className="create-account">
+        <Link to="/">
           <img className="image-logo-create" src={logo} alt="logo" />
-        </a>
+        </Link>
 
         <p className="title-create">Criar uma conta</p>
         <form
@@ -121,12 +121,12 @@ export const Registration: FC = () => {
               <ButtonSimple>
                 Já tem uma conta?
                 {' '}
-                <b>Faça login</b>
+                <strong>Faça login</strong>
               </ButtonSimple>
             </Link>
           </div>
         </form>
-      </div>
+      </section>
     </main>
   );
 };
