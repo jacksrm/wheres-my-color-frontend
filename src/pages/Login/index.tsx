@@ -17,10 +17,10 @@ export const Login: FC = () => {
   const [invalidPassword, setInvalidPassword] = useState(false);
   const [defaultError, setDefaultError] = useState('');
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-  const { logIn } = useContext(LoginContext);
 
-  const navigate = useNavigate();                                
+  const { logIn } = useContext(LoginContext);
+  const navigate = useNavigate();
+
   const handleLogin = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -95,7 +95,6 @@ export const Login: FC = () => {
             type="password"
             placeholder="Senha"
             required
-            autoFocus
           />
           <p className="error">{invalidPassword && 'Senha inválida'}</p>
 
