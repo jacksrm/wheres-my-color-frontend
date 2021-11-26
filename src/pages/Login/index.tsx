@@ -49,8 +49,8 @@ export const Login: FC = () => {
   };
 
   return (
-    <div className="login">
-      <div className="login-account">
+    <main className="login">
+      <section className="login-account">
         <Link to="/">
           {' '}
           <img className="image-logo-login" src={logo} alt="logo" />
@@ -78,11 +78,14 @@ export const Login: FC = () => {
           <p className="error">{invalidPassword && 'Senha inválida'}</p>
 
           {loading ? (
-            <img className="loading" src={AnimationLoading} alt="logo carregando" />
+            <img
+              className="loading"
+              src={AnimationLoading}
+              alt="logo carregando"
+            />
           ) : (
             <ButtonCustom disabled={loading} type="submit">
               {loading ? 'CARREGANDO' : 'PRONTO'}
-              PRONTO
             </ButtonCustom>
           )}
           <Link to="/create">
@@ -90,12 +93,12 @@ export const Login: FC = () => {
               {' '}
               Não tem uma conta?
               {' '}
-              <b>Cadastre-se</b>
+              <strong>Cadastre-se</strong>
             </ButtonSimple>
           </Link>
         </form>
-      </div>
+      </section>
       <img className="border-page" src={UnderBarLoginScreen} alt="under bar " />
-    </div>
+    </main>
   );
 };

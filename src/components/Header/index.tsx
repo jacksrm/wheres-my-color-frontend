@@ -1,15 +1,20 @@
 import {
   FC, useState, useEffect, useContext,
 } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '../Buttons';
 import { UserContext } from '../../context/UserProvider';
-import logo from '../../images/logoM.svg';
+import { ImageProfile } from '../ImageProfile';
+import { LoginContext } from '../../context/LoginProvider';
+
 import './index.css';
 
 export const Header: FC = () => {
-  const { profilePicture, username } = useContext(UserContext);
+  const { username } = useContext(UserContext);
   const [menuState, setMenuState] = useState(0);
+
+  const navigate = useNavigate();
+  const { token } = useContext(LoginContext);
 
   useEffect(() => {
     if (menuState === 1) {
@@ -23,6 +28,14 @@ export const Header: FC = () => {
         ?.setAttribute('style', 'opacity:0; visibility:hidden;');
     }
   });
+
+  function Logout() {
+    const headers = {
+      Authorization: `Bearer ${token}`,
+    };
+
+    navigate('/login');
+  }
 
   const renderSVG = () => (
     <svg
@@ -60,17 +73,23 @@ export const Header: FC = () => {
 
   return (
     <header className="header">
-      <Link to="/MyHome">
-        {renderSVG()}
-      </Link>
+      <Link to="/MyHome">{renderSVG()}</Link>
+
       <h1>WHERE’S MY COLOR?</h1>
-      <Button className="btn" onClick={() => setMenuState(menuState + 1)}>
-        <img className="profile" src={profilePicture} alt="Foto de Perfil" />
+
+      <Button onClick={() => setMenuState(menuState + 1)}>
+        <ImageProfile />
       </Button>
+
       <div id="menu" className="menu">
-        <Button className="close" onClick={() => setMenuState(menuState - 1)}>
+        <button
+          type="button"
+          className="close"
+          onClick={() => setMenuState(menuState - 1)}
+        >
           X
-        </Button>
+        </button>
+
         <p className="nameUser">
           Olá
           {' '}
@@ -83,7 +102,7 @@ export const Header: FC = () => {
             <Link to="/Account">Configurações</Link>
           </li>
           <li>
-            <Link to="/">Sair</Link>
+            <button className="sair" type="submit" onClick={Logout}>Sair</button>
           </li>
         </ul>
       </div>
