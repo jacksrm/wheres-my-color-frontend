@@ -1,56 +1,44 @@
-.account-main .border-page {
-  margin-top: -18px;
-}
-.account-main .account {
-  position: absolute;
+.account-main {
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  margin: -150px;
-  margin-top: 150px;
-  left: 50%;
-}
-.account-main .title {
-  position: absolute;
-  width: 288px;
-  height: 46px;
-  margin-left: 23px;
-
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 40px;
-  line-height: 119.69%;
-
-  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+}
 
-  color: #737373;
+.account-main .border-page {
+  position: fixed;
+  width: 100vw;
+  bottom: 0;
 }
-.account-main form {
-  position: relative;
-  margin-top: 120px;
-  margin-left: -70px;
-}
-.account-main input {
+
+.account-main .account {
   display: flex;
-  background: #f8f8f8;
-  mix-blend-mode: darken;
-  appearance: none;
-  outline: 0;
-  width: 400px;
-
-  border-radius: 100px;
-  border: transparent;
-  padding: 10px 15px;
-  margin: 0 auto 18px auto;
-
-  text-align: center;
-  font-weight: 300;
-  font-size: 18px;
-  color: black;
+  flex-direction: column;
+  align-items: center;
 }
-.account-main .btn {
-  margin-top: 40px;
-  margin-left: 30px;
+
+.account-main .account .profile {
+  width: 100px;
+  height: 100px;
 }
-.account-main .profile {
+
+.account-main .account .title {
+  color: #737373;
+  margin: 10px 0 25px;
+  font-size: 2rem;
+}
+
+.account-main .account form {
+  display: flex;
+  flex-direction: column;
+}
+
+.account-main .account form .edit-input {
+  margin-bottom: 15px;
+}
+
+.account-main .account form .btn-submit {
+  margin-top: 15px;
 }

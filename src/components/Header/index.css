@@ -83,10 +83,13 @@
 }
 
 .header .menu li a:hover,
-.header .menu li a:focus,
+.header .menu li a:focus {
+  background: #1567e3;
+  color: whitesmoke;
+}
 .header .sair:hover,
 .header .sair:focus  {
-  background: #1567e3;
+  background: #ff5959;
   color: whitesmoke;
 }
 
