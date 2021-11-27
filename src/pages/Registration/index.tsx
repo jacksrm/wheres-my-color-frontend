@@ -45,8 +45,8 @@ export const Registration: FC = () => {
 
   const renderSVG = () => (
     <svg
-      width="618"
-      height="1081"
+      width="600"
+      height="800"
       viewBox="0 0 618 1081"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
