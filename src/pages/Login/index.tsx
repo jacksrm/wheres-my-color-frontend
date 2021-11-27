@@ -7,7 +7,6 @@ import { LoginContext } from '../../context/LoginProvider';
 import { ButtonSimple, ButtonCustom } from '../../components/Buttons';
 import { Loading } from '../../components/Loading';
 import logo from '../../images/logo.png';
-import AnimationLoading from '../../images/LoadingAnimation50.gif';
 import UnderBarLoginScreen from '../../images/UnderBarLoginScreen.png';
 
 import './index.css';
