@@ -7,7 +7,7 @@ import illustration from '../../images/Group 2042.svg';
 import './index.css';
 
 export const Initial: FC = () => (
-  <div>
+  <main className="Initial">
     <header className="navbar">
       <h2 className="Title">Where’s My Collor?</h2>
     </header>
@@ -25,17 +25,19 @@ export const Initial: FC = () => (
       <ButtonCustom>LOGIN</ButtonCustom>
     </Link>
     <Link to="/create">
-      <ButtonSimple>
-        Não tem conta?
-        {' '}
-        <b>Cadastre-se</b>
-      </ButtonSimple>
+      <div className="create">
+        <ButtonSimple className="create">
+          Não tem conta?
+          {' '}
+          <strong>Cadastre-se</strong>
+        </ButtonSimple>
+      </div>
     </Link>
 
     <p className="border-div" />
 
-    {/* criar componente container com slide sobre o projeto talvez */}
+    {/* criar componente container com slide sobre o projeto */}
 
     <FooterPage />
-  </div>
+  </main>
 );

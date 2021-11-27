@@ -32,6 +32,19 @@ const ButtonCustom = styled.button`
     border-color: transparent;
   }
 `;
-const Button = styled.button``;
+const Button = styled.button`
+  position: absolute;
+  background: transparent;
+  border-color: white;
+  border-radius: 50px;
+  cursor: pointer;
+
+  right: 25px;
+  bottom: 0;
+  margin: 0.2rem;
+  width: 54px;
+  height: 54px;
+  padding: 0px 0px 0px 0px;
+`;
 
 export { ButtonSimple, ButtonCustom, Button };

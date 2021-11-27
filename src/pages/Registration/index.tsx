@@ -1,8 +1,5 @@
 import {
-  FC,
-  FormEvent,
-  useContext,
-  useState,
+  FC, FormEvent, useContext, useState,
 } from 'react';
 import { wmcApi } from 'api';
 import { LoginContext } from 'context/LoginProvider';
@@ -12,6 +9,7 @@ import md5 from 'md5';
 import { ButtonSimple, ButtonCustom } from '../../components/Buttons';
 
 import logo from '../../images/logo.png';
+import AnimationLoading from '../../images/LoadingAnimation50.gif';
 
 import './index.css';
 
@@ -34,7 +32,9 @@ export const Registration: FC = () => {
         username,
         email,
         password,
-        profilePicture: `https://www.gravatar.com/avatar/${hashEmail(email)}.png?s=100&d=identicon`,
+        profilePicture: `https://www.gravatar.com/avatar/${hashEmail(
+          email,
+        )}.png?s=100&d=identicon`,
       })
       .then(() => logIn({ email, password }))
       .finally(() => {
@@ -88,9 +88,7 @@ export const Registration: FC = () => {
         </Link>
 
         <p className="title-create">Criar uma conta</p>
-        <form
-          onSubmit={handleRegister}
-        >
+        <form onSubmit={handleRegister}>
           <input
             onChange={(e) => setUsername(e.target.value)}
             value={username}
@@ -113,18 +111,25 @@ export const Registration: FC = () => {
             required
           />
 
-          <div className="btn-create">
+          {loading ? (
+            <img
+              className="loading"
+              src={AnimationLoading}
+              alt="logo carregando"
+            />
+          ) : (
             <ButtonCustom disabled={loading} type="submit">
-              { loading ? 'CARREGANDO' : 'PRONTO' }
+              {loading ? 'CARREGANDO' : 'PRONTO'}
             </ButtonCustom>
-            <Link to="/login">
-              <ButtonSimple>
-                Já tem uma conta?
-                {' '}
-                <strong>Faça login</strong>
-              </ButtonSimple>
-            </Link>
-          </div>
+          )}
+          <Link to="/login">
+            <ButtonSimple>
+              {' '}
+              Já tem uma conta?
+              {' '}
+              <strong>Faça login</strong>
+            </ButtonSimple>
+          </Link>
         </form>
       </section>
     </main>
