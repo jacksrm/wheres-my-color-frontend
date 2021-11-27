@@ -84,8 +84,8 @@ export const Login: FC = () => {
               alt="logo carregando"
             />
           ) : (
-            <ButtonCustom disabled={loading} type="submit">
-              {loading ? 'CARREGANDO' : 'PRONTO'}
+            <ButtonCustom className="btn-login" disabled={loading} type="submit">
+              PRONTO
             </ButtonCustom>
           )}
           <Link to="/create">
