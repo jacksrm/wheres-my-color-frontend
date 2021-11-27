@@ -1,11 +1,12 @@
 import {
-  FC, FormEvent, useContext, useState,
+  FC, FormEvent, useContext, useEffect, useState,
 } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ButtonSimple, ButtonCustom } from '../../components/Buttons';
+import { UserContext } from 'context/UserProvider';
 import { LoginContext } from '../../context/LoginProvider';
+import { ButtonSimple, ButtonCustom } from '../../components/Buttons';
+import { Loading } from '../../components/Loading';
 import logo from '../../images/logo.png';
-import AnimationLoading from '../../images/LoadingAnimation50.gif';
 import UnderBarLoginScreen from '../../images/UnderBarLoginScreen.png';
 
 import './index.css';
@@ -19,6 +20,7 @@ export const Login: FC = () => {
   const [loading, setLoading] = useState(false);
 
   const { logIn } = useContext(LoginContext);
+  const { username } = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleLogin = (e: FormEvent<HTMLFormElement>) => {
@@ -30,9 +32,6 @@ export const Login: FC = () => {
     setDefaultError('');
 
     logIn({ email, password })
-      .then(() => {
-        navigate('/MyHome');
-      })
       .catch((error) => {
         switch (error.response.data.message) {
           case 'Theres no user with this email!':
@@ -42,11 +41,15 @@ export const Login: FC = () => {
           default:
             return setDefaultError(error.response.data.message);
         }
-      })
-      .finally(() => {
-        setLoading(false);
       });
   };
+
+  useEffect(() => {
+    if (username) {
+      navigate(`/${username}`);
+      setLoading(false);
+    }
+  }, [username, navigate]);
 
   return (
     <main className="login">
@@ -78,14 +81,10 @@ export const Login: FC = () => {
           <p className="error">{invalidPassword && 'Senha inválida'}</p>
 
           {loading ? (
-            <img
-              className="loading"
-              src={AnimationLoading}
-              alt="logo carregando"
-            />
+            <Loading size={50} />
           ) : (
-            <ButtonCustom disabled={loading} type="submit">
-              {loading ? 'CARREGANDO' : 'PRONTO'}
+            <ButtonCustom className="btn-login" disabled={loading} type="submit">
+              PRONTO
             </ButtonCustom>
           )}
           <Link to="/create">

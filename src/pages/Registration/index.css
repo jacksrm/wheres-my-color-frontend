@@ -1,58 +1,57 @@
-.create-account {
+.registration {
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  padding: 100px 0px 0px 25%;
-  flex-direction: column;
-  align-items: center;
 }
-.border-page-image {
-  position: fixed;
-  left: -75px;
-  top: 0;
-}
-.create-account .image-logo-create {
-  width: 74px;
-  height: 74px;
-}
-.create-account .title-create {
-  width: 288px;
-  height: 46px;
 
-  font-style: normal;
-  font-weight: bold;
-  font-size: 40px;
-  line-height: 119.69%;
-  align-items: center;
-  color: #737373;
+.registration .border-age-image {
+  height: 100vh;
 }
-.create-account form {
+
+.registration .create-account {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: 0 auto;
+}
+
+.registration .create-account .logo {
+  width: 100px;
+  height: 100px;
+}
+
+.registration .create-account h2 {
+  font-size: 2.5rem;
+  color: #737373;
+  margin: 10px 0;
+}
+
+.registration .create-account form {
+  display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px 50px 0px 50px;
 }
-.create-account input {
-  background: #f8f8f8;
-  width: 400px;
+
+.registration .create-account form input {
+  display: flex;
+  background: #ebebeb;
+  box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.15);
 
   border-radius: 100px;
-  border: transparent;
+  border: none;
   padding: 10px 15px;
-  margin: 0 auto 18px auto;
+  margin: 10px auto;
 
   text-align: center;
-  font-weight: 300;
-  font-size: 18px;
-  color: black;
-}
-.create-account .error {
-  color: #ff5959;
+  font-size: 1.2rem;
+  color: #181818;
 }
 
-@media only screen and (max-width: 1560px) {
-  .create-account {
-    margin: 150px;
-  }
+.registration .create-account form input::placeholder {
+  color: #9b9999df;
 }
-@media only screen and (max-width: 1360px) {
+
+.registration .create-account .link-login {
+  margin-bottom: 25px;
 }

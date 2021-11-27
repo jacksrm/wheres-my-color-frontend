@@ -3,7 +3,7 @@ import { ButtonCustom } from '../../components/Buttons';
 import './index.css';
 
 export const Account: FC = () => (
-  <main>
+  <main className="account-main">
     {/* Implementar troca de imagens de perfil */}
     <div className="profile" />
 
