@@ -1,14 +1,14 @@
-.border-page {
+.account-main .border-page {
   margin-top: -18px;
 }
-.account {
+.account-main .account {
   position: absolute;
   display: flex;
   margin: -150px;
   margin-top: 150px;
   left: 50%;
 }
-.title {
+.account-main .title {
   position: absolute;
   width: 288px;
   height: 46px;
@@ -25,12 +25,12 @@
 
   color: #737373;
 }
-form {
+.account-main form {
   position: relative;
   margin-top: 120px;
   margin-left: -70px;
 }
-input {
+.account-main input {
   display: flex;
   background: #f8f8f8;
   mix-blend-mode: darken;
@@ -48,13 +48,9 @@ input {
   font-size: 18px;
   color: black;
 }
-.btn {
+.account-main .btn {
   margin-top: 40px;
   margin-left: 30px;
 }
-.profile {
-}
-@media only screen and (max-width: 1560px) {
-}
-@media only screen and (max-width: 1360px) {
+.account-main .profile {
 }
