@@ -28,3 +28,22 @@ body::-webkit-scrollbar-thumb {
   border: transparent;
 
 }
+
+.input {
+  display: flex;
+  background: #ebebeb;
+  box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.15);
+
+  border-radius: 100px;
+  border: none;
+  padding: 10px 15px;
+  margin: 10px auto;
+  min-width: 400px;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #181818;
+}
+
+.input::placeholder {
+  color: #9b9999df;
+}
