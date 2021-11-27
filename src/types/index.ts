@@ -15,3 +15,32 @@ export interface IUserContext {
   username: string;
   createdAt: string;
 }
+
+export interface IPalette {
+  colors: {
+    values: {
+      hex: string;
+      rgb: string;
+    };
+    title: string;
+    _id: string;
+    createdAt: string;
+    updatedAt: string;
+  }[];
+  ownerId: string;
+  name: string;
+  isPublic: boolean;
+  createdAt: string;
+  updatedAt: string;
+  membersId: string[];
+  authorizeChange: string[];
+  _id: string;
+}
+
+export interface IUserWithPalettes {
+  _id: string;
+  username: string;
+  profilePicture: string;
+  createdAt: string;
+  palettes: IPalette[];
+}

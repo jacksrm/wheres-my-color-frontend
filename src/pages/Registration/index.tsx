@@ -10,7 +10,8 @@ import { ButtonSimple, ButtonCustom } from '../../components/Buttons';
 
 import logo from '../../images/logo.png';
 import AnimationLoading from '../../images/LoadingAnimation50.gif';
-import sideImg from '../../images/registrationImg.png';
+import sideImg from '../../images/registrationImg.svg';
+
 import './index.css';
 
 const hashEmail = (email: string) => md5(email);

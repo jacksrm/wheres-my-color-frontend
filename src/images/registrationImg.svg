@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="111.837 64.357 215.708 377.971" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <filter id="morphology-filter-1" x="-500%" y="-500%" width="1000%" height="1000%" bx:preset="morphology 1 dilate 4">
+      <feMorphology operator="dilate" radius="4"/>
+    </filter>
+    <filter id="morphology-filter-0" x="-500%" y="-500%" width="1000%" height="1000%" bx:preset="morphology 1 dilate 4">
+      <feMorphology operator="dilate" radius="4"/>
+    </filter>
+  </defs>
+  <rect x="182.81" y="64.372" width="58.65" height="98.167" fill="#181818" style="filter: url(#morphology-filter-1);"/>
+  <path fillrule="evenodd" cliprule="evenodd" d="M 240.956 64.357 L 111.837 64.357 L 111.837 104.613 L 111.837 132.777 L 111.837 367.959 L 111.837 373.908 L 111.837 388.773 L 111.837 428.329 L 111.837 442.328 L 241.436 442.168 L 241.436 428.169 L 241.452 428.329 L 241.452 367.959 L 241.414 367.959 L 241.414 344.228 C 262.707 343.06 283.674 334.407 300.036 318.241 C 317.933 300.56 326.911 277.261 326.935 253.945 L 327 253.945 L 327.545 163.846 L 241.414 163.324 L 241.414 104.613 L 240.956 104.613 L 240.956 64.357 Z M 241.414 163.324 L 237.445 163.3 L 237.445 163.35 C 214.125 163.088 190.714 171.782 172.813 189.468 C 137.253 224.599 136.906 281.906 172.038 317.466 C 191.004 336.663 216.433 345.598 241.414 344.228 L 241.414 163.324 Z" fill="#181818" style="filter: url(#morphology-filter-0);"/>
+  <path style="fill: rgb(255, 255, 255); stroke: rgb(255, 255, 255); mix-blend-mode: lighten; isolation: isolate;" d="M 151.143 159.437 C 223.687 159.358 268.797 237.796 232.594 300.66 C 215.848 329.736 184.645 347.157 151.092 347.307" transform="matrix(-1, 0, 0, -1, 396.489929, 507.128937)"/>
+  <path fillrule="evenodd" cliprule="evenodd" d="M 242.059 306.167 C 252.827 304.731 263.247 300.104 271.704 292.255 C 282.443 282.285 287.971 269.016 288.213 255.655 L 288.251 255.656 L 289.451 204.031 L 240.956 202.999 L 242.059 306.167 Z" fill="white" style=""/>
+  <path fillrule="evenodd" cliprule="evenodd" d="M 245.368 203.098 C 214.213 203.098 188.638 225.972 188.638 254.505 C 188.638 283.037 214.213 305.719 245.368 305.719 L 245.368 203.098 Z" fill="#1567E3" style=""/>
+</svg>

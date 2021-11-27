@@ -1,107 +1,109 @@
 .header {
-  position: absolute;
+  position: fixed;
   background: #181818;
   width: 100vw;
-  height: 60px;
-  bottom: 1;
-  left: 0;
-  margin-top: -8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.24);
 }
+
+.header img {
+  width: 54px;
+  height: 54px;
+}
+
 .header h1 {
-  position: absolute;
   font-style: normal;
   font-size: 2rem;
-  
-  padding: 10px 0px 10px 40%;
-  flex-direction: row;
-  margin-top: -50px;
   color: #f8f8f8;
 }
+
 .header .image {
   width: 54px;
   height: 54px;
+}
 
-  padding: 4px 0px 0px 25px;
-}
-.header .nameUser {
-  color: #888;
-}
-.header .lineName {
-  width: 200px;
-  height: 3px;
-  margin-top: -10px;
-
-  background: #545454;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
-  border-radius: 100px;
-}
 .header .menu {
   position: absolute;
-  background: white;
+  background: whitesmoke;
   width: 200px;
-  text-align: center;
-  border-radius: 4px;
+  border-radius: 6px;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.8);
   color: #888;
+  display: flex;
+  flex-direction: column;
 
-  right: 0;
-  bottom: 1;
-  visibility: hidden;
-  transition: opacity 0.4s;
+  right: 5px;
+  top: 80px;
+  transition: visibility 0.4s;
 }
-.header .menu ul,
-li,
-li a {
-  display: block;
-  margin: 10;
-  padding: 0;
+
+.header .menu .nameUser {
+  color: #888;
+  padding: 5px 0;
+  text-align: center;
+  width: 100%;
+  border-bottom: 3px solid #888;
 }
+
+.header .menu ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  align-items: center;
+}
+
+.header .menu li,
 .header .menu li a {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.header .menu li a,
+.header .menu li button {
   padding: 5px;
   color: #888;
   text-decoration: none;
   transition: all 0.2s;
 }
-.header .menu li a:hover,
-.header .menu li a:focus {
-  background: #1567e3;
-  color: #fff;
-}
-.header .sair{
-  background: transparent;
-  border: transparent;
+
+.header .sair {
+  background: none;
+  border: none;
   text-align: center;
   font-size: 1rem;
   transition: all 0.2s;
-  width: 200px;
+  width: 100%;
   color: #888;
-  cursor: pointer; 
+  cursor: pointer;
+  border-radius: 0 0 6px 6px;
 }
+
+.header .menu li a:hover,
+.header .menu li a:focus,
 .header .sair:hover,
-.header .sair:focus {
+.header .sair:focus  {
   background: #1567e3;
-  color: #fff;
+  color: whitesmoke;
 }
+
+
 .header .close {
   display: flex;
   background: transparent;
   border: transparent;
   border-radius: 0;
-  color: #888; 
-  cursor: pointer; 
+  color: #888;
+  cursor: pointer;
 
   right: 0;
   bottom: 0;
   padding: 0px 10px 0px 10px;
-
 }
 .header .close:hover {
   background: #1567e3;
-  color: #fff;
-}
-@media only screen and (max-width: 1560px){
-
-}
-@media only screen and (max-width: 1360px){
-
+  color: whitesmoke;
 }
