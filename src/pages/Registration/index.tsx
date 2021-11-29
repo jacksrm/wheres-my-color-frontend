@@ -37,39 +37,15 @@ export const Registration: FC = () => {
           email,
         )}.png?s=100&d=identicon`,
       })
-      .then(() => logIn({ email, password }))
-      .finally(() => {
+      .then(() => {
         setLoading(false);
-        navigate('/MyHome');
+        navigate('/login');
+      })
+      .catch((err) => {
+        console.timeLog(err.response.message);
       });
   };
 
-  // const renderSVG = () => (
-  //   <svg
-  //     viewBox="111.837 64.357 215.708 377.971"
-  //     width="215.708"
-  //     height="377.971"
-  //   >
-  //     <defs>
-  //       <filter
-  //         id="morphology-filter-0"
-  //         data-bx-preset="morphology 1 dilate 4"
-  //         x="-500%"
-  //         y="-500%"
-  //         width="1000%"
-  //         height="1000%"
-  //       >
-  //         <feMorphology operator="dilate" radius="4" />
-  //       </filter>
-  //     </defs>
-  //     <path
-  //       fillrule="evenodd"
-  //       cliprule="evenodd"
-  //       fill="#181818"
-  //       style={{ filter: 'url(#morphology-filter-0)' }}
-  //     />
-  //   </svg>
-  // );
   return (
     <main className="registration">
       <img className="border-page-image" src={sideImg} alt="side" />

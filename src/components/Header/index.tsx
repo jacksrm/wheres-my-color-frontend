@@ -24,7 +24,7 @@ export const Header: FC = () => {
 
   return (
     <header className="header">
-      <Link to="/MyHome">
+      <Link to={`/${username}`}>
         <img src={logo} alt="logo" />
       </Link>
 
