@@ -1,11 +1,13 @@
 import {
-  FC, FormEvent, useContext, useState,
+  FC, FormEvent, useState,
+  // FC, FormEvent, useContext, useState,
 } from 'react';
 import { wmcApi } from 'api';
-import { LoginContext } from 'context/LoginProvider';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+// import { Link, useNavigate } from 'react-router-dom';
 import md5 from 'md5';
 
+// import { AxiosResponse } from 'axios';
 import { ButtonSimple, ButtonCustom } from '../../components/Buttons';
 
 import logo from '../../images/logo.png';
@@ -21,8 +23,8 @@ export const Registration: FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const { logIn } = useContext(LoginContext);
-  const navigate = useNavigate();
+  // const { logIn } = useContext(LoginContext);
+  // const navigate = useNavigate();
 
   const handleRegister = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -37,13 +39,10 @@ export const Registration: FC = () => {
           email,
         )}.png?s=100&d=identicon`,
       })
-      .then(() => {
-        setLoading(false);
-        navigate('/login');
-      })
       .catch((err) => {
         console.timeLog(err.response.message);
-      });
+      })
+      .finally(() => setLoading(false));
   };
 
   return (
