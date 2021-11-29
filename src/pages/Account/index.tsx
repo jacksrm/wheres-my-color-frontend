@@ -1,7 +1,6 @@
 import {
   FC,
   FormEvent,
-  FormEventHandler,
   useContext,
   useEffect,
   useState,
@@ -34,6 +33,7 @@ export const Account: FC = () => {
   const [success, setSuccess] = useState(false);
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     if (!token || !userId) {
       navigate('/login');

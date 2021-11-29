@@ -33,6 +33,7 @@ export const Login: FC = () => {
 
     logIn({ email, password })
       .catch((error) => {
+        setLoading(false);
         switch (error.response.data.message) {
           case 'Theres no user with this email!':
             return setInvalidEmail(true);
