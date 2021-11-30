@@ -7,7 +7,7 @@ export const useCheckRightClick = (
   useEffect(() => {
     function handleRightClick(event: MouseEvent) {
       event.preventDefault();
-      if (!ref.current?.contains(event.target as Node)) {
+      if (ref.current?.contains(event.target as Node)) {
         callback(true);
       } else {
         callback(false);

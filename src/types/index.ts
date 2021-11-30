@@ -8,12 +8,13 @@ export interface ILoginContext {
   logIn: (data: ILoginData) => Promise<void>;
 }
 
-export interface IUserContext {
-  profilePicture: string;
-  userId: string;
-  email: string;
-  username: string;
-  createdAt: string;
+export interface IColors {
+  values: {
+    hex: string;
+    rgb: string;
+  };
+  title: string;
+  _id: string;
 }
 
 export interface IPalette {
@@ -37,10 +38,25 @@ export interface IPalette {
   _id: string;
 }
 
+export interface IAddPaletteData {
+  name: string;
+  isPublic: boolean;
+}
+
 export interface IUserWithPalettes {
   _id: string;
   username: string;
   profilePicture: string;
   createdAt: string;
   palettes: IPalette[];
+}
+
+export interface IUserContext {
+  profilePicture: string;
+  userId: string;
+  email: string;
+  username: string;
+  createdAt: string;
+  palettes: IPalette[];
+  addPalette: (data: IAddPaletteData) => void;
 }

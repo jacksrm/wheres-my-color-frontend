@@ -1,0 +1,46 @@
+.palette-preview {
+  display: flex;
+  flex-direction: column;
+}
+
+.palette-preview .controls {
+  margin-bottom: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ebebeb;
+  box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.15);
+  width: 80vw;
+  border-radius: 100px;
+  border: none;
+  padding: 5px 35px;
+}
+
+.palette-preview .controls a {
+  font-weight: 400;
+  color: #545454;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: color 200ms;
+}
+
+.palette-preview .controls a:hover {
+  color: #15AAE3;
+}
+
+.palette-preview .controls .actions button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #545454;
+  transition: color 200ms, transform 200ms;
+  cursor: pointer;
+}
+
+.palette-preview .controls .actions .delete-button:hover {
+  color: #ff5959;
+  transform: scale(1.05);
+}

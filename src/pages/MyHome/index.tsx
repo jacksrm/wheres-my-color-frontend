@@ -2,11 +2,16 @@ import {
   FC, useContext, useEffect, useState,
 } from 'react';
 import { useParams } from 'react-router-dom';
+import { OverlayContainer } from 'components/OverlayContainer';
 import { wmcApi } from '../../api';
 import { LoginContext } from '../../context/LoginProvider';
 import { UserContext } from '../../context/UserProvider';
 import { Header } from '../../components/Header';
 import { Loading } from '../../components/Loading';
+import { PalettePreview } from '../../components/PalettePreview';
+import { AddButton } from '../../components/AddButton';
+import { AddPalette } from '../../components/AddPalette';
+
 import { IUserWithPalettes } from '../../types';
 
 import './index.css';
@@ -21,6 +26,7 @@ export const MyHome: FC = () => {
   });
 
   const [loading, setLoading] = useState(true);
+  const [showAddPalette, setShowAddPalette] = useState(false);
 
   const { username } = useParams();
   const {
@@ -28,38 +34,36 @@ export const MyHome: FC = () => {
     createdAt,
     profilePicture,
     userId,
+    palettes,
+    addPalette,
   } = useContext(UserContext);
   const { token } = useContext(LoginContext);
 
   useEffect(() => {
     if (username !== loggedUsername) {
-      wmcApi.get('').then(({ data }) => {
-        console.log(username, data);
-        const tmp = data.find(
-          (user: IUserWithPalettes) => user.username === username,
-        );
-        if (tmp) {
-          setDisplayUser(tmp);
-        }
-      })
+      wmcApi
+        .get('')
+        .then(({ data }) => {
+          console.log(username, data);
+          const tmp = data.find(
+            (user: IUserWithPalettes) => user.username === username,
+          );
+          if (tmp) {
+            setDisplayUser(tmp);
+          }
+        })
         .finally(() => setLoading(false));
     } else {
-      wmcApi
-        .get('/user/palettes', {
-          headers: { Authorization: `Bearer ${token}` },
-        })
-        .then(({ data }) => {
-          setDisplayUser({
-            username: loggedUsername,
-            createdAt,
-            profilePicture,
-            _id: userId,
-            palettes: data.palettes,
-          });
-        })
-        .finally(() => setLoading(false));
+      setDisplayUser({
+        username: loggedUsername,
+        createdAt,
+        profilePicture,
+        _id: userId,
+        palettes,
+      });
+      setLoading(false);
     }
-  }, [username, loggedUsername, createdAt, profilePicture, token, userId]);
+  }, [username, loggedUsername, createdAt, profilePicture, token, userId, palettes]);
 
   const renderPalettes = () => {
     if (!displayUser.username) {
@@ -76,13 +80,19 @@ export const MyHome: FC = () => {
         </section>
       );
     }
-
+    console.log(displayUser);
     return (
       <section className="palettes">
-        <h3>{displayUser.username}</h3>
         <ul>
-          {displayUser.palettes.map(() => (
-            <li>paleta</li>
+          {displayUser.palettes.map((palette) => (
+            <PalettePreview
+              showAdd
+              showDelete={loggedUsername === username}
+              paletteId={palette._id}
+              key={palette._id}
+              colors={palette.colors}
+              title={palette.name}
+            />
           ))}
         </ul>
       </section>
@@ -102,6 +112,14 @@ export const MyHome: FC = () => {
     <main className="my-home">
       <Header />
       {renderPalettes()}
+      {showAddPalette && (
+        <OverlayContainer handle={() => setShowAddPalette(false)}>
+          <AddPalette handleAddPalette={addPalette} />
+        </OverlayContainer>
+      )}
+      {loggedUsername === username && (
+        <AddButton onClick={() => setShowAddPalette(true)} type="circle" />
+      )}
     </main>
   );
 };

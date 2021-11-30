@@ -1,0 +1,25 @@
+
+.colors {
+  display: flex;
+  margin-bottom: 32px;
+}
+
+.colors .color {
+  width: 98px;
+  height: 98px;
+  margin: 0 8px;
+  cursor: pointer;
+  transition: transform 200ms;
+}
+
+.colors .color:hover {
+  transform: scale(1.05);
+}
+
+.colors .color:first-of-type {
+  margin-left: 5px;
+}
+
+.colors .color:last-of-type {
+  margin-right: 5px;
+}

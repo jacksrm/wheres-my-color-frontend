@@ -1,0 +1,31 @@
+.success-message {
+  display: flex;
+  align-items: center;
+  background-color: #15a9e396;
+  border: 2px solid #15AAE3;
+  box-shadow: 0 0 3px 3px #15a9e350;
+  color: #46536d;
+  font-size: 1.1rem;
+  width: 350px;
+  padding: 15px;
+  margin: 8px;
+  border-radius: 15px;
+  position: absolute;
+  right: 0;
+}
+
+.success-message img {
+  width: 50px;
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 3s linear;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 3s, opacity 3s linear;
+}
