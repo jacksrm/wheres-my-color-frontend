@@ -14,7 +14,7 @@
   background-color: #F1E72A;
   border: none;
   box-shadow: 3px 3px 4px  rgba(0, 0, 0, 0.24);
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: 0;
   margin: 35px;

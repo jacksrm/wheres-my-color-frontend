@@ -24,6 +24,7 @@ export const OverlayContainer: FC<{ handle: () => void }> = ({ children, handle 
     <div style={{ visibility }} className={`overlay ${visibility}`}>
       <div ref={containerRef} className="container">
         <button
+          className="close"
           onClick={() => {
             setVisibility('hidden');
             setTimeout(() => handle(), 200);
