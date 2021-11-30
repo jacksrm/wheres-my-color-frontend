@@ -1,3 +1,4 @@
+import { AddButton } from 'components/AddButton';
 import { FC } from 'react';
 
 import { IColors } from '../../types';
@@ -6,9 +7,10 @@ import './index.css';
 
 interface IColorsGalleryProps {
   colors: IColors[];
+  add?: boolean;
 }
 
-export const ColorsGallery: FC<IColorsGalleryProps> = ({ colors }) => (
+export const ColorsGallery: FC<IColorsGalleryProps> = ({ colors, add }) => (
   <div className="colors">
     {colors.map(({ values, _id }) => (
       <div
@@ -17,5 +19,6 @@ export const ColorsGallery: FC<IColorsGalleryProps> = ({ colors }) => (
         className="color"
       />
     ))}
+    {add && <AddButton type="square" />}
   </div>
 );

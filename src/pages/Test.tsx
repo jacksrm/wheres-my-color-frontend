@@ -1,6 +1,7 @@
 import {
   FC, useContext, useEffect, useState, useRef,
 } from 'react';
+import { AddButton } from 'components/AddButton';
 import { useCheckRightClick } from '../hooks/useCheckRightClick';
 import { SuccessMessage } from '../components/SuccessMessage';
 
@@ -20,6 +21,7 @@ export const Test: FC = () => {
       <button ref={buttonRef} type="button">
         aqui
       </button>
+      <AddButton type="square" />
       <SuccessMessage animation="shake" message="Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, similique quos quas sit nesciunt, maxime aperiam in, explicabo dolorum cum consectetur deleniti neque placeat vitae asperiores. Accusantium eius rerum provident." />
     </div>
   );

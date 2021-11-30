@@ -87,6 +87,7 @@ export const MyHome: FC = () => {
         <ul>
           {displayUser.palettes.map((palette) => (
             <PalettePreview
+              showAdd
               showDelete={loggedUsername === username}
               paletteId={palette._id}
               key={palette._id}
@@ -112,7 +113,7 @@ export const MyHome: FC = () => {
     <main className="my-home">
       <Header />
       {renderPalettes()}
-      {loggedUsername === username && <AddButton />}
+      {loggedUsername === username && <AddButton type="circle" />}
     </main>
   );
 };
