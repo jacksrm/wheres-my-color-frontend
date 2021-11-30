@@ -8,6 +8,9 @@ import { AxiosResponse, AxiosError } from 'axios';
 import { LoginContext } from '../../context/LoginProvider';
 
 import { Loading } from '../../components/Loading';
+import { ColorsGallery } from '../../components/ColorsGallery';
+import { Header } from '../../components/Header';
+import { GoBack } from '../../components/GoBack';
 
 import { IPalette } from '../../types';
 
@@ -41,14 +44,19 @@ export const Palette: FC = () => {
   if (loading) {
     return (
       <main className="palette">
+        <Header />
         <Loading size={100} />
       </main>
     );
   }
 
+  console.log(palette.colors);
   return (
-    <main>
-      <h1>{palette.name}</h1>
+    <main className="palette">
+      <Header />
+      <GoBack />
+      <h1 className="palette-name">{palette.name}</h1>
+      <ColorsGallery colors={palette.colors ?? []} />
     </main>
   );
 };
