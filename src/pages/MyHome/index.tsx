@@ -8,6 +8,7 @@ import { UserContext } from '../../context/UserProvider';
 import { Header } from '../../components/Header';
 import { Loading } from '../../components/Loading';
 import { PalettePreview } from '../../components/PalettePreview';
+import { AddButton } from '../../components/AddButton';
 
 import { IUserWithPalettes } from '../../types';
 
@@ -86,6 +87,7 @@ export const MyHome: FC = () => {
         <ul>
           {displayUser.palettes.map((palette) => (
             <PalettePreview
+              showDelete={loggedUsername === username}
               paletteId={palette._id}
               key={palette._id}
               colors={palette.colors}
@@ -110,6 +112,7 @@ export const MyHome: FC = () => {
     <main className="my-home">
       <Header />
       {renderPalettes()}
+      {loggedUsername === username && <AddButton />}
     </main>
   );
 };

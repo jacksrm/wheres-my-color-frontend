@@ -1,0 +1,27 @@
+.add-btn {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #F1E72A;
+  border: none;
+  box-shadow: 3px 3px 4px  rgba(0, 0, 0, 0.24);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 35px;
+  font-size: 1.7rem;
+  color: whitesmoke;
+  cursor: pointer;
+}
+
+.add-btn svg {
+  stroke-width: 3px;
+  transition: transform 200ms;
+}
+
+.add-btn:active svg {
+  transform: rotate(45deg);
+}
