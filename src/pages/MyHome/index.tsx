@@ -35,15 +35,17 @@ export const MyHome: FC = () => {
 
   useEffect(() => {
     if (username !== loggedUsername) {
-      wmcApi.get('').then(({ data }) => {
-        console.log(username, data);
-        const tmp = data.find(
-          (user: IUserWithPalettes) => user.username === username,
-        );
-        if (tmp) {
-          setDisplayUser(tmp);
-        }
-      })
+      wmcApi
+        .get('')
+        .then(({ data }) => {
+          console.log(username, data);
+          const tmp = data.find(
+            (user: IUserWithPalettes) => user.username === username,
+          );
+          if (tmp) {
+            setDisplayUser(tmp);
+          }
+        })
         .finally(() => setLoading(false));
     } else {
       wmcApi
@@ -83,7 +85,12 @@ export const MyHome: FC = () => {
       <section className="palettes">
         <ul>
           {displayUser.palettes.map((palette) => (
-            <PalettePreview key={palette._id} colors={palette.colors} title={palette.name} />
+            <PalettePreview
+              paletteId={palette._id}
+              key={palette._id}
+              colors={palette.colors}
+              title={palette.name}
+            />
           ))}
         </ul>
       </section>

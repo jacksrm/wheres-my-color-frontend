@@ -1,4 +1,7 @@
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
+
+import { ColorsGallery } from '../ColorsGallery';
 
 import { IColors } from '../../types';
 
@@ -7,19 +10,12 @@ import './index.css';
 interface IPalettePreviewProps {
   colors: IColors[];
   title: string;
+  paletteId: string;
 }
 
-export const PalettePreview: FC<IPalettePreviewProps> = ({ colors, title }) => (
+export const PalettePreview: FC<IPalettePreviewProps> = ({ colors, title, paletteId }) => (
   <section className="palette-preview">
-    <h3>{title}</h3>
-    <div className="colors">
-      {colors.map(({ values, _id }) => (
-        <div
-          key={_id}
-          style={{ backgroundColor: values.hex }}
-          className="color"
-        />
-      ))}
-    </div>
+    <Link to={`/palette/${paletteId}`}>{title}</Link>
+    <ColorsGallery colors={colors} />
   </section>
 );

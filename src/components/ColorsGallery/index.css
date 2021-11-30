@@ -1,0 +1,26 @@
+
+.colors {
+  display: flex;
+  margin-bottom: 32px;
+}
+
+.colors .color {
+  width: 108px;
+  height: 108px;
+  margin: 0 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 200ms;
+}
+
+.colors .color:hover {
+  transform: scale(1.05);
+}
+
+.colors .color:first-of-type {
+  margin-left: 0;
+}
+
+.colors .color:last-of-type {
+  margin-right: 0;
+}
