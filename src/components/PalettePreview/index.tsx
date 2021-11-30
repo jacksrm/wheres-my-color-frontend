@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
+import { FiTrash2 } from 'react-icons/fi';
 
 import { ColorsGallery } from '../ColorsGallery';
 
@@ -15,7 +16,15 @@ interface IPalettePreviewProps {
 
 export const PalettePreview: FC<IPalettePreviewProps> = ({ colors, title, paletteId }) => (
   <section className="palette-preview">
-    <Link to={`/palette/${paletteId}`}>{title}</Link>
+    <div className="controls">
+      <Link to={`/palette/${paletteId}`}>{title}</Link>
+
+      <div className="actions">
+        <button type="button" className="delete-button">
+          <FiTrash2 />
+        </button>
+      </div>
+    </div>
     <ColorsGallery colors={colors} />
   </section>
 );
