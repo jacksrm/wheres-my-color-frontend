@@ -1,22 +1,25 @@
 import {
   FC, useState, useContext, useRef,
 } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '../Buttons';
 import { UserContext } from '../../context/UserProvider';
+import { LoginContext } from '../../context/LoginProvider';
 import { ImageProfile } from '../ImageProfile';
 import { useCheckCLickOutside } from '../../hooks/useCheckCLickOutside';
+import { Logout } from '../../utils/Logout';
 
 import logo from '../../images/logo.png';
 
 import './index.css';
 
 export const Header: FC = () => {
-  const { username } = useContext(UserContext);
+  const { username, email } = useContext(UserContext);
+  const { token } = useContext(LoginContext);
   const [hideMenu, setHideMenu] = useState(true);
   const menuRef = useRef(null);
-  // const navigate = useNavigate();
-  // const { token } = useContext(LoginContext);
+
+  const navigate = useNavigate();
 
   useCheckCLickOutside(menuRef, (outsideClick: boolean) => {
     setHideMenu(outsideClick);
@@ -54,7 +57,12 @@ export const Header: FC = () => {
               className="sair"
               type="button"
               onClick={() => {
-                console.log('logout');
+                Logout(token, email);
+
+                const logout = () => localStorage.getItem(token) == null;
+                if (logout()) {
+                  navigate('/login');
+                }
               }}
             >
               Sair
