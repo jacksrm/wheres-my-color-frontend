@@ -2,6 +2,7 @@ import {
   FC, useContext, useEffect, useState, useRef,
 } from 'react';
 import { useCheckRightClick } from '../hooks/useCheckRightClick';
+import { SuccessMessage } from '../components/SuccessMessage';
 
 export const Test: FC = () => {
   const [rightClick, setRightClick] = useState(false);
@@ -16,7 +17,7 @@ export const Test: FC = () => {
 
   return (
     <div>
-      <button type="button" ref={menuRightClick} onContextMenu={() => setRightClick(true)}> aqui </button>
+      <SuccessMessage animation="shake" message="Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, similique quos quas sit nesciunt, maxime aperiam in, explicabo dolorum cum consectetur deleniti neque placeat vitae asperiores. Accusantium eius rerum provident." />
     </div>
   );
 };

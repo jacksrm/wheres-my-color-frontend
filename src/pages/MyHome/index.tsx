@@ -7,6 +7,8 @@ import { LoginContext } from '../../context/LoginProvider';
 import { UserContext } from '../../context/UserProvider';
 import { Header } from '../../components/Header';
 import { Loading } from '../../components/Loading';
+import { PalettePreview } from '../../components/PalettePreview';
+
 import { IUserWithPalettes } from '../../types';
 
 import './index.css';
@@ -76,13 +78,12 @@ export const MyHome: FC = () => {
         </section>
       );
     }
-
+    console.log(displayUser);
     return (
       <section className="palettes">
-        <h3>{displayUser.username}</h3>
         <ul>
-          {displayUser.palettes.map(() => (
-            <li>paleta</li>
+          {displayUser.palettes.map((palette) => (
+            <PalettePreview key={palette._id} colors={palette.colors} title={palette.name} />
           ))}
         </ul>
       </section>

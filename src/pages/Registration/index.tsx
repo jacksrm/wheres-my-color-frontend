@@ -7,7 +7,9 @@ import { Link } from 'react-router-dom';
 // import { Link, useNavigate } from 'react-router-dom';
 import md5 from 'md5';
 
-// import { AxiosResponse } from 'axios';
+import { AxiosResponse } from 'axios';
+import { SuccessMessage } from 'components/SuccessMessage';
+import { setServers } from 'dns';
 import { ButtonSimple, ButtonCustom } from '../../components/Buttons';
 
 import logo from '../../images/logo.png';
@@ -23,6 +25,7 @@ export const Registration: FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
   // const { logIn } = useContext(LoginContext);
   // const navigate = useNavigate();
 
@@ -39,16 +42,31 @@ export const Registration: FC = () => {
           email,
         )}.png?s=100&d=identicon`,
       })
+      .then(({ status }: AxiosResponse) => {
+        if (status === 201) {
+          setSuccess(true);
+          setTimeout(() => setSuccess(false), 6000);
+          setUsername('');
+          setEmail('');
+          setPassword('');
+        }
+      })
       .catch((err) => {
         console.timeLog(err.response.message);
       })
       .finally(() => setLoading(false));
   };
 
+  const displaySuccess = () => {
+    if (success) return <SuccessMessage message="Usuário criado com sucesso!" />;
+
+    return <p style={{ position: 'absolute', display: 'none' }} />;
+  };
+
   return (
     <main className="registration">
       <img className="border-page-image" src={sideImg} alt="side" />
-
+      {displaySuccess()}
       <section className="create-account">
         <Link to="/">
           <img className="logo" src={logo} alt="logo" />
@@ -78,15 +96,6 @@ export const Registration: FC = () => {
             required
           />
 
-          <Link className="link-login" to="/login">
-            <ButtonSimple>
-              {' '}
-              Já tem uma conta?
-              {' '}
-              <strong>Faça login</strong>
-            </ButtonSimple>
-          </Link>
-
           {loading ? (
             <img
               className="loading"
@@ -100,6 +109,14 @@ export const Registration: FC = () => {
           )}
 
         </form>
+        <Link className="link-login" to="/login">
+          <ButtonSimple>
+            {' '}
+            Já tem uma conta?
+            {' '}
+            <strong>Faça login</strong>
+          </ButtonSimple>
+        </Link>
       </section>
     </main>
   );

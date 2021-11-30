@@ -52,6 +52,6 @@
   color: #9b9999df;
 }
 
-.registration .create-account .link-login {
-  margin-bottom: 25px;
+.registration .create-account form button  {
+  margin-top: 25px;
 }

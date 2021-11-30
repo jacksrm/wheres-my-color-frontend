@@ -16,6 +16,15 @@ export interface IUserContext {
   createdAt: string;
 }
 
+export interface IColors {
+  values: {
+    hex: string;
+    rgb: string;
+  };
+  title: string;
+  _id: string;
+}
+
 export interface IPalette {
   colors: {
     values: {
