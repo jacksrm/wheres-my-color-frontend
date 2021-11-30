@@ -4,21 +4,28 @@ import {
 import { AddButton } from 'components/AddButton';
 import { useCheckRightClick } from '../hooks/useCheckRightClick';
 import { SuccessMessage } from '../components/SuccessMessage';
+import { OverlayContainer } from '../components/OverlayContainer';
 
 export const Test: FC = () => {
   // const [rightClick, setRightClick] = useState(false);
+  const [show, setShow] = useState(false);
   const buttonRef = useRef(null);
 
-  useCheckRightClick(buttonRef, (rightClicked: boolean) => {
-    if (rightClicked) {
-      // setRightClick(RightClick);
-      console.log('botão direito clicado!');
-    }
-  });
+  // useCheckRightClick(buttonRef, (rightClicked: boolean) => {
+  //   if (rightClicked) {
+  //     // setRightClick(RightClick);
+  //     console.log('botão direito clicado!');
+  //   }
+  // });
 
   return (
     <div>
-      <button ref={buttonRef} type="button">
+      {show && (
+      <OverlayContainer handle={() => setShow(false)}>
+        <h1>Olá</h1>
+      </OverlayContainer>
+      )}
+      <button onClick={() => setShow(true)} type="button">
         aqui
       </button>
       <AddButton type="square" />

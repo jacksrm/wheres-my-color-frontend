@@ -1,7 +1,7 @@
 import { MutableRefObject, useEffect } from 'react';
 
 export const useCheckCLickOutside = (
-  ref: MutableRefObject<HTMLDivElement | null>,
+  ref: MutableRefObject<HTMLElement | null>,
   callback: (outsideClick: boolean) => void,
 ) => {
   useEffect(() => {
