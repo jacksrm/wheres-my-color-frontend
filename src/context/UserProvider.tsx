@@ -9,7 +9,12 @@ import {
   useState,
 } from 'react';
 import { wmcApi } from '../api';
-import { IAddPaletteData, IPalette, IUserContext } from '../types';
+import {
+  IAddPaletteData,
+  IPalette,
+  IRemovePalette,
+  IUserContext,
+} from '../types';
 import { LoginContext } from './LoginProvider';
 
 export const UserContext = createContext({} as IUserContext);
@@ -65,6 +70,21 @@ export const UserProvider: FC = ({ children }) => {
     [getUserPalettes, token],
   );
 
+  const removePalette = useCallback(
+    ({ paletteId }: IRemovePalette) => {
+      wmcApi
+        .delete(`/palette/${paletteId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then(({ status }: AxiosResponse) => {
+          if (status === 200) getUserPalettes();
+        });
+    },
+    [getUserPalettes, token],
+  );
+
   const context = useMemo(
     () => ({
       profilePicture,
@@ -74,8 +94,18 @@ export const UserProvider: FC = ({ children }) => {
       createdAt,
       palettes,
       addPalette,
+      removePalette,
     }),
-    [createdAt, email, profilePicture, userId, username, palettes, addPalette],
+    [
+      createdAt,
+      email,
+      profilePicture,
+      userId,
+      username,
+      palettes,
+      addPalette,
+      removePalette,
+    ],
   );
 
   useEffect(() => {
