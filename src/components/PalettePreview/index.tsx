@@ -1,9 +1,10 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FiTrash2 } from 'react-icons/fi';
 
+import { UserContext } from '../../context/UserProvider';
+
 import { ColorsGallery } from '../ColorsGallery';
-import { AddButton } from '../AddButton';
 
 import { IColors } from '../../types';
 
@@ -23,19 +24,27 @@ export const PalettePreview: FC<IPalettePreviewProps> = ({
   paletteId,
   showDelete,
   showAdd,
-}) => (
-  <section className="palette-preview">
-    <div className="controls">
-      <Link to={`/palette/${paletteId}`}>{title}</Link>
+}) => {
+  const { removePalette } = useContext(UserContext);
 
-      <div className="actions">
-        {showDelete && (
-          <button type="button" className="delete-button">
-            <FiTrash2 />
-          </button>
-        )}
+  return (
+    <section className="palette-preview">
+      <div className="controls">
+        <Link to={`/palette/${paletteId}`}>{title}</Link>
+
+        <div className="actions">
+          {showDelete && (
+            <button
+              onClick={() => removePalette({ paletteId })}
+              type="button"
+              className="delete-button"
+            >
+              <FiTrash2 />
+            </button>
+          )}
+        </div>
       </div>
-    </div>
-    <ColorsGallery add={showAdd} colors={colors} />
-  </section>
-);
+      <ColorsGallery add={showAdd} colors={colors} />
+    </section>
+  );
+};
