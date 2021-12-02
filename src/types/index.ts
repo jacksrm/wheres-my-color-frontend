@@ -66,6 +66,12 @@ export interface IUserWithPalettes {
   palettes: IPalette[];
 }
 
+export interface AuthContextData {
+  signed: boolean;
+  token: string;
+  user: object;
+}
+
 export interface IUserContext {
   profilePicture: string;
   userId: string;
@@ -85,6 +91,7 @@ export interface IEditPalette {
   authorizeChange?: string[];
   paletteId: string;
 }
+
 export interface IPaletteContext {
   palette: IPalette;
   addColor: (data: IAddColor) => Promise<void>;
