@@ -1,0 +1,26 @@
+.edit-palette {
+  display: flex;
+}
+
+.edit-palette .palette-name {
+  display: flex;
+  font-size: 1.2rem;
+  background: none;
+  border: none;
+  color: #1c789c;
+}
+
+.edit-palette button {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #15AAE3;
+}
+
+.edit-palette button svg {
+  stroke-width: 4px;
+}

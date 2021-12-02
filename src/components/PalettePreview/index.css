@@ -28,6 +28,10 @@
   color: #15AAE3;
 }
 
+.palette-preview .controls .actions {
+  display: flex;
+}
+
 .palette-preview .controls .actions button {
   display: flex;
   justify-content: center;
@@ -38,9 +42,14 @@
   color: #545454;
   transition: color 200ms, transform 200ms;
   cursor: pointer;
+  margin: 0 4px;
 }
 
-.palette-preview .controls .actions .delete-button:hover {
+.palette-preview .controls .actions .delete-button:hover,
+.palette-preview .controls .actions .cancel:hover {
   color: #ff5959;
-  transform: scale(1.05);
+}
+
+.palette-preview .controls .actions .edit-button:hover {
+  color: #15AAE3;
 }
