@@ -8,25 +8,74 @@ import './index.css';
 
 interface ILoadingProps {
   size: 50 | 100 | 200 | 300 | 500;
+  distanceHeader?: boolean;
 }
 
-export const Loading = ({ size }: ILoadingProps) => {
+export const Loading = ({ size, distanceHeader }: ILoadingProps) => {
   switch (size) {
     case 50:
-      return <img className="loading" src={loading50} alt="loading" />;
+      return (
+        <img
+          className={`loading loading-50 ${
+            distanceHeader && 'distance-header'
+          }`}
+          src={loading50}
+          alt="loading"
+        />
+      );
 
     case 100:
-      return <img className="loading" src={loading100} alt="loading" />;
+      return (
+        <img
+          className={`loading loading-100 ${
+            distanceHeader && 'distance-header'
+          }`}
+          src={loading100}
+          alt="loading"
+        />
+      );
 
     case 200:
-      return <img className="loading" src={loading200} alt="loading" />;
+      return (
+        <img
+          className={`loading loading-200 ${
+            distanceHeader && 'distance-header'
+          }`}
+          src={loading200}
+          alt="loading"
+        />
+      );
 
     case 300:
-      return <img className="loading" src={loading300} alt="loading" />;
+      return (
+        <img
+          className={`loading loading-300 ${
+            distanceHeader && 'distance-header'
+          }`}
+          src={loading300}
+          alt="loading"
+        />
+      );
 
     case 500:
-      return <img className="loading" src={loading500} alt="loading" />;
+      return (
+        <img
+          className={`loading loading-500 ${
+            distanceHeader && 'distance-header'
+          }`}
+          src={loading500}
+          alt="loading"
+        />
+      );
     default:
-      return <img className="loading" src={loading50} alt="loading" />;
+      return (
+        <img
+          className={`loading loading-50 ${
+            distanceHeader && 'distance-header'
+          }`}
+          src={loading50}
+          alt="loading"
+        />
+      );
   }
 };

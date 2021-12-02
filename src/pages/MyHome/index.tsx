@@ -2,15 +2,19 @@ import {
   FC, useContext, useEffect, useState,
 } from 'react';
 import { useParams } from 'react-router-dom';
-import { OverlayContainer } from 'components/OverlayContainer';
+
 import { wmcApi } from '../../api';
+
 import { LoginContext } from '../../context/LoginProvider';
 import { UserContext } from '../../context/UserProvider';
+import { PaletteProvider } from '../../context/PaletteProvider';
+
 import { Header } from '../../components/Header';
 import { Loading } from '../../components/Loading';
 import { PalettePreview } from '../../components/PalettePreview';
 import { AddButton } from '../../components/AddButton';
 import { AddPalette } from '../../components/AddPalette';
+import { OverlayContainer } from '../../components/OverlayContainer';
 
 import { IUserWithPalettes } from '../../types';
 
@@ -85,14 +89,13 @@ export const MyHome: FC = () => {
       <section className="palettes">
         <ul>
           {displayUser.palettes.map((palette) => (
-            <PalettePreview
-              showAdd
-              showDelete={loggedUsername === username}
-              paletteId={palette._id}
-              key={palette._id}
-              colors={palette.colors}
-              title={palette.name}
-            />
+            <PaletteProvider palette={palette}>
+              <PalettePreview
+                showAdd={loggedUsername === username}
+                showDelete={loggedUsername === username}
+                key={palette._id}
+              />
+            </PaletteProvider>
           ))}
         </ul>
       </section>
@@ -103,7 +106,7 @@ export const MyHome: FC = () => {
     return (
       <main className="my-home">
         <Header />
-        <Loading size={100} />
+        <Loading distanceHeader size={100} />
       </main>
     );
   }

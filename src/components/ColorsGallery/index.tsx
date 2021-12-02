@@ -1,24 +1,36 @@
-import { AddButton } from 'components/AddButton';
-import { FC } from 'react';
+import { FC, useContext, useState } from 'react';
 
-import { IColors } from '../../types';
+import { PaletteContext } from '../../context/PaletteProvider';
+
+import { AddButton } from '../AddButton';
+import { OverlayContainer } from '../OverlayContainer';
+import { AddColor } from '../AddColor';
 
 import './index.css';
 
 interface IColorsGalleryProps {
-  colors: IColors[];
   add?: boolean;
 }
 
-export const ColorsGallery: FC<IColorsGalleryProps> = ({ colors, add }) => (
-  <div className="colors">
-    {colors.map(({ values, _id }) => (
-      <div
-        key={_id}
-        style={{ backgroundColor: values.hex }}
-        className="color"
-      />
-    ))}
-    {add && <AddButton type="square" />}
-  </div>
-);
+export const ColorsGallery: FC<IColorsGalleryProps> = ({ add }) => {
+  const [showAddColor, setShowAddColor] = useState(false);
+
+  const { palette: { colors } } = useContext(PaletteContext);
+  return (
+    <div className="colors">
+      {(colors ?? []).map(({ values, _id }) => (
+        <div
+          key={_id}
+          style={{ backgroundColor: values.hex }}
+          className="color"
+        />
+      ))}
+      {add && <AddButton onClick={() => setShowAddColor(true)} type="square" />}
+      {showAddColor && (
+        <OverlayContainer handle={() => setShowAddColor(false)}>
+          <AddColor afterAction={() => setShowAddColor(false)} />
+        </OverlayContainer>
+      )}
+    </div>
+  );
+};

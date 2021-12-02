@@ -47,6 +47,17 @@ export interface IRemovePalette {
   paletteId: string;
 }
 
+export interface IAddColor {
+  data: {
+    title?: string;
+    values: {
+      hex: string;
+      rgb: string;
+    };
+  };
+  paletteId: string;
+}
+
 export interface IUserWithPalettes {
   _id: string;
   username: string;
@@ -64,4 +75,10 @@ export interface IUserContext {
   palettes: IPalette[];
   addPalette: (data: IAddPaletteData) => void;
   removePalette: (data: IRemovePalette) => void;
+  getUserPalettes: () => void
+}
+
+export interface IPaletteContext {
+  palette: IPalette,
+  addColor: (data: IAddColor) => Promise<void>
 }
