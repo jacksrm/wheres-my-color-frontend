@@ -1,7 +1,6 @@
 import {
   FC,
   FormEvent,
-  FormEventHandler,
   useContext,
   useEffect,
   useState,
@@ -16,6 +15,7 @@ import { UserContext } from '../../context/UserProvider';
 import { ImageProfile } from '../../components/ImageProfile';
 import { ButtonCustom } from '../../components/Buttons';
 import { EditInput } from '../../components/EditInput';
+import { GoBack } from '../../components/GoBack';
 
 import { LoginContext } from '../../context/LoginProvider';
 
@@ -34,6 +34,7 @@ export const Account: FC = () => {
   const [success, setSuccess] = useState(false);
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     if (!token || !userId) {
       navigate('/login');
@@ -74,6 +75,7 @@ export const Account: FC = () => {
 
   return (
     <main className="account-main">
+      <GoBack />
       <div className="account">
         <ImageProfile />
         <h2 className="title">Configurações</h2>

@@ -1,8 +1,5 @@
-.my-home {
+.add-palette {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-.my-home .palettes {
-  margin-top: 96px;
 }

@@ -1,11 +1,15 @@
 import {
-  FC, FormEvent, useContext, useState,
+  FC, FormEvent, useState,
+  // FC, FormEvent, useContext, useState,
 } from 'react';
 import { wmcApi } from 'api';
-import { LoginContext } from 'context/LoginProvider';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+// import { Link, useNavigate } from 'react-router-dom';
 import md5 from 'md5';
 
+import { AxiosResponse } from 'axios';
+import { SuccessMessage } from 'components/SuccessMessage';
+import { setServers } from 'dns';
 import { ButtonSimple, ButtonCustom } from '../../components/Buttons';
 
 import logo from '../../images/logo.png';
@@ -21,8 +25,9 @@ export const Registration: FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const { logIn } = useContext(LoginContext);
-  const navigate = useNavigate();
+  const [success, setSuccess] = useState(false);
+  // const { logIn } = useContext(LoginContext);
+  // const navigate = useNavigate();
 
   const handleRegister = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -37,43 +42,31 @@ export const Registration: FC = () => {
           email,
         )}.png?s=100&d=identicon`,
       })
-      .then(() => logIn({ email, password }))
-      .finally(() => {
-        setLoading(false);
-        navigate('/MyHome');
-      });
+      .then(({ status }: AxiosResponse) => {
+        if (status === 201) {
+          setSuccess(true);
+          setTimeout(() => setSuccess(false), 6000);
+          setUsername('');
+          setEmail('');
+          setPassword('');
+        }
+      })
+      .catch((err) => {
+        console.timeLog(err.response.message);
+      })
+      .finally(() => setLoading(false));
   };
 
-  // const renderSVG = () => (
-  //   <svg
-  //     viewBox="111.837 64.357 215.708 377.971"
-  //     width="215.708"
-  //     height="377.971"
-  //   >
-  //     <defs>
-  //       <filter
-  //         id="morphology-filter-0"
-  //         data-bx-preset="morphology 1 dilate 4"
-  //         x="-500%"
-  //         y="-500%"
-  //         width="1000%"
-  //         height="1000%"
-  //       >
-  //         <feMorphology operator="dilate" radius="4" />
-  //       </filter>
-  //     </defs>
-  //     <path
-  //       fillrule="evenodd"
-  //       cliprule="evenodd"
-  //       fill="#181818"
-  //       style={{ filter: 'url(#morphology-filter-0)' }}
-  //     />
-  //   </svg>
-  // );
+  const displaySuccess = () => {
+    if (success) return <SuccessMessage message="Usuário criado com sucesso!" />;
+
+    return <p style={{ position: 'absolute', display: 'none' }} />;
+  };
+
   return (
     <main className="registration">
       <img className="border-page-image" src={sideImg} alt="side" />
-
+      {displaySuccess()}
       <section className="create-account">
         <Link to="/">
           <img className="logo" src={logo} alt="logo" />
@@ -103,15 +96,6 @@ export const Registration: FC = () => {
             required
           />
 
-          <Link className="link-login" to="/login">
-            <ButtonSimple>
-              {' '}
-              Já tem uma conta?
-              {' '}
-              <strong>Faça login</strong>
-            </ButtonSimple>
-          </Link>
-
           {loading ? (
             <img
               className="loading"
@@ -125,6 +109,14 @@ export const Registration: FC = () => {
           )}
 
         </form>
+        <Link className="link-login" to="/login">
+          <ButtonSimple>
+            {' '}
+            Já tem uma conta?
+            {' '}
+            <strong>Faça login</strong>
+          </ButtonSimple>
+        </Link>
       </section>
     </main>
   );

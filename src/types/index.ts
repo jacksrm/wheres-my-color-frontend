@@ -8,12 +8,13 @@ export interface ILoginContext {
   logIn: (data: ILoginData) => Promise<void>;
 }
 
-export interface IUserContext {
-  profilePicture: string;
-  userId: string;
-  email: string;
-  username: string;
-  createdAt: string;
+export interface IColors {
+  values: {
+    hex: string;
+    rgb: string;
+  };
+  title: string;
+  _id: string;
 }
 
 export interface IPalette {
@@ -37,6 +38,26 @@ export interface IPalette {
   _id: string;
 }
 
+export interface IAddPaletteData {
+  name: string;
+  isPublic: boolean;
+}
+
+export interface IRemovePalette {
+  paletteId: string;
+}
+
+export interface IAddColor {
+  data: {
+    title?: string;
+    values: {
+      hex: string;
+      rgb: string;
+    };
+  };
+  paletteId: string;
+}
+
 export interface IUserWithPalettes {
   _id: string;
   username: string;
@@ -44,8 +65,35 @@ export interface IUserWithPalettes {
   createdAt: string;
   palettes: IPalette[];
 }
+
 export interface AuthContextData {
   signed: boolean;
   token: string;
   user: object;
+}
+
+export interface IUserContext {
+  profilePicture: string;
+  userId: string;
+  email: string;
+  username: string;
+  createdAt: string;
+  palettes: IPalette[];
+  addPalette: (data: IAddPaletteData) => void;
+  removePalette: (data: IRemovePalette) => void;
+  getUserPalettes: () => void;
+}
+
+export interface IEditPalette {
+  name?: string;
+  isPublic?: boolean;
+  membersId?: string[];
+  authorizeChange?: string[];
+  paletteId: string;
+}
+
+export interface IPaletteContext {
+  palette: IPalette;
+  addColor: (data: IAddColor) => Promise<void>;
+  editPalette: (data: IEditPalette) => Promise<void>;
 }

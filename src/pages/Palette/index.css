@@ -1,0 +1,16 @@
+.palette {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.palette > :nth-child(2),
+.palette > :nth-child(3) {
+  margin-top: 96px;
+}
+
+.palette .palette-name {
+  margin-bottom: 25px;
+  font-weight: 300;
+  color: #7b7b7b;
+}
