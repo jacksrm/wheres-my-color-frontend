@@ -22,6 +22,11 @@
   margin-left: 10px;
 }
 
+.colors .btnColors{
+  background-color: transparent;
+  border: transparent;
+}
+
 .colors .color:last-child {
   margin-right: 10px;
 }
