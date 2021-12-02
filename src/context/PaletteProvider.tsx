@@ -4,7 +4,9 @@ import {
 
 import { wmcApi } from '../api';
 
-import { IAddColor, IPalette, IPaletteContext } from '../types';
+import {
+  IAddColor, IEditPalette, IPalette, IPaletteContext,
+} from '../types';
 import { LoginContext } from './LoginProvider';
 import { UserContext } from './UserProvider';
 
@@ -34,10 +36,26 @@ export const PaletteProvider: FC<IPaletteProvider> = ({
     [getUserPalettes, token],
   );
 
-  const context = useMemo(() => ({
-    palette,
-    addColor,
-  }), [palette, addColor]);
+  const editPalette = useCallback(
+    async (data: IEditPalette) => {
+      const { status } = await wmcApi.put(`/palette/${data.paletteId}`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (status === 200) getUserPalettes();
+    },
+    [getUserPalettes, token],
+  );
+
+  const context = useMemo(
+    () => ({
+      palette,
+      addColor,
+      editPalette,
+    }),
+    [palette, addColor, editPalette],
+  );
 
   return (
     <PaletteContext.Provider value={context}>

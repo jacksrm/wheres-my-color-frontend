@@ -92,6 +92,7 @@ export const MyHome: FC = () => {
             <PaletteProvider palette={palette}>
               <PalettePreview
                 showAdd={loggedUsername === username}
+                showEdit={loggedUsername === username}
                 showDelete={loggedUsername === username}
                 key={palette._id}
               />

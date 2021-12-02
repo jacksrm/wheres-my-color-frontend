@@ -10,9 +10,10 @@ import './index.css';
 
 interface IColorsGalleryProps {
   add?: boolean;
+  center?: boolean;
 }
 
-export const ColorsGallery: FC<IColorsGalleryProps> = ({ add }) => {
+export const ColorsGallery: FC<IColorsGalleryProps> = ({ add, center }) => {
   const [showAddColor, setShowAddColor] = useState(false);
   const [show, setShow] = useState(false);
 
@@ -24,7 +25,7 @@ export const ColorsGallery: FC<IColorsGalleryProps> = ({ add }) => {
   };
 
   return (
-    <div className="colors">
+    <div className={`colors ${center && 'center'}`}>
       {(colors ?? []).map(({ values, _id }) => (
         <div>
           {notifyColor()}
