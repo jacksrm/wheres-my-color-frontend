@@ -10,7 +10,6 @@ import {
 } from 'react';
 import { wmcApi } from '../api';
 import {
-  IAddColor,
   IAddPaletteData,
   IPalette,
   IRemovePalette,
@@ -86,19 +85,6 @@ export const UserProvider: FC = ({ children }) => {
     [getUserPalettes, token],
   );
 
-  const addColor = useCallback(
-    async ({ paletteId, data }: IAddColor) => {
-      const { status } = await wmcApi.post(`/color/create/${paletteId}`, data, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      if (status === 200) getUserPalettes();
-    },
-    [getUserPalettes, token],
-  );
-
   const context = useMemo(
     () => ({
       profilePicture,
@@ -107,9 +93,9 @@ export const UserProvider: FC = ({ children }) => {
       username,
       createdAt,
       palettes,
+      getUserPalettes,
       addPalette,
       removePalette,
-      addColor,
     }),
     [
       createdAt,
@@ -118,9 +104,9 @@ export const UserProvider: FC = ({ children }) => {
       userId,
       username,
       palettes,
+      getUserPalettes,
       addPalette,
       removePalette,
-      addColor,
     ],
   );
 

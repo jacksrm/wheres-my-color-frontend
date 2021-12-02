@@ -106,7 +106,7 @@ export const MyHome: FC = () => {
     return (
       <main className="my-home">
         <Header />
-        <Loading size={100} />
+        <Loading distanceHeader size={100} />
       </main>
     );
   }

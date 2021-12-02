@@ -9,3 +9,8 @@
   width: 98px;
   height: 98px;
 }
+
+.add-color .loading {
+  margin-top: 0 !important; 
+  width: 50px;
+}

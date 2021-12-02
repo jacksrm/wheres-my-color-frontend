@@ -15,10 +15,10 @@ interface IColorsGalleryProps {
 export const ColorsGallery: FC<IColorsGalleryProps> = ({ add }) => {
   const [showAddColor, setShowAddColor] = useState(false);
 
-  const { colors } = useContext(PaletteContext);
+  const { palette: { colors } } = useContext(PaletteContext);
   return (
     <div className="colors">
-      {colors.map(({ values, _id }) => (
+      {(colors ?? []).map(({ values, _id }) => (
         <div
           key={_id}
           style={{ backgroundColor: values.hex }}

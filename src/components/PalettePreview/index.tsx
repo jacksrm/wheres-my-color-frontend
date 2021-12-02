@@ -20,8 +20,7 @@ export const PalettePreview: FC<IPalettePreviewProps> = ({
 }) => {
   const { removePalette } = useContext(UserContext);
   const {
-    name: title,
-    _id: paletteId,
+    palette: { name: title, _id: paletteId },
   } = useContext(PaletteContext);
   return (
     <section className="palette-preview">

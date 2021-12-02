@@ -5,6 +5,7 @@ import {
 import { useParams, useNavigate } from 'react-router-dom';
 import { AxiosResponse, AxiosError } from 'axios';
 
+import { PaletteProvider } from 'context/PaletteProvider';
 import { LoginContext } from '../../context/LoginProvider';
 
 import { Loading } from '../../components/Loading';
@@ -26,19 +27,31 @@ export const Palette: FC = () => {
 
   useEffect(() => {
     setLoading(true);
-    wmcApi
-      .get(`/palette/${paletteId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then(({ data }: AxiosResponse) => setPalette(data.palette))
-      .catch((err: AxiosError) => {
-        if (err.response?.status === 401) {
-          navigate('/login');
-        }
-      })
-      .finally(() => setLoading(false));
+    if (token) {
+      wmcApi
+        .get(`/palette/${paletteId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then(({ data }: AxiosResponse) => setPalette(data.palette))
+        .catch((err: AxiosError) => {
+          if (err.response?.status === 401) {
+            navigate('/login');
+          }
+        })
+        .finally(() => setLoading(false));
+    } else {
+      wmcApi
+        .get(`/palette/public/${paletteId}`)
+        .then(({ data }: AxiosResponse) => setPalette(data.palette))
+        .catch((err: AxiosError) => {
+          if (err.response?.status === 404) {
+            navigate('/NotFound');
+          }
+        })
+        .finally(() => setLoading(false));
+    }
   }, [paletteId, token, navigate]);
 
   if (loading) {
@@ -56,7 +69,9 @@ export const Palette: FC = () => {
       <Header />
       <GoBack />
       <h1 className="palette-name">{palette.name}</h1>
-      <ColorsGallery colors={palette.colors ?? []} />
+      <PaletteProvider palette={palette}>
+        <ColorsGallery />
+      </PaletteProvider>
     </main>
   );
 };
