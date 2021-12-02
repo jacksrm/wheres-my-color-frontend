@@ -86,17 +86,18 @@ export const UserProvider: FC = ({ children }) => {
     [getUserPalettes, token],
   );
 
-  const addColor = useCallback(({ paletteId, data }: IAddColor) => {
-    wmcApi
-      .post(`/color/create/${paletteId}`, data, {
+  const addColor = useCallback(
+    async ({ paletteId, data }: IAddColor) => {
+      const { status } = await wmcApi.post(`/color/create/${paletteId}`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      })
-      .then(({ status }: AxiosResponse) => {
-        if (status === 200) getUserPalettes();
       });
-  }, [getUserPalettes, token]);
+
+      if (status === 200) getUserPalettes();
+    },
+    [getUserPalettes, token],
+  );
 
   const context = useMemo(
     () => ({

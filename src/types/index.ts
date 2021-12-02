@@ -75,5 +75,5 @@ export interface IUserContext {
   palettes: IPalette[];
   addPalette: (data: IAddPaletteData) => void;
   removePalette: (data: IRemovePalette) => void;
-  addColor: (data: IAddColor) => void
+  addColor: (data: IAddColor) => Promise<void>
 }
