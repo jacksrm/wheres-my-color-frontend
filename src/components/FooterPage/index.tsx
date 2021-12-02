@@ -27,6 +27,7 @@ export const FooterPage: FC = () => (
 
     <p className="copyright">
       Copyright &copy; 2021 All Rights Reserved by
+      {' '}
       <a href="http://">Where’s My Collor? Project</a>
       .
     </p>

@@ -2,6 +2,7 @@ import {
   FC, useContext, useEffect, useState, useRef,
 } from 'react';
 import { AddButton } from 'components/AddButton';
+import copy from 'clipboard-copy';
 import { useCheckRightClick } from '../hooks/useCheckRightClick';
 import { SuccessMessage } from '../components/SuccessMessage';
 import { OverlayContainer } from '../components/OverlayContainer';
@@ -18,14 +19,26 @@ export const Test: FC = () => {
   //   }
   // });
 
+  const btn = () => {
+    document.addEventListener('click', () => {
+      copy('teste copiou o lance aqui');
+    });
+  };
+
   return (
     <div>
       {show && (
       <OverlayContainer handle={() => setShow(false)}>
-        <h1>Olá</h1>
+        <h1>puts</h1>
       </OverlayContainer>
       )}
-      <button onClick={() => setShow(true)} type="button">
+      <button
+        onClick={() => {
+          setShow(true);
+          btn();
+        }}
+        type="button"
+      >
         aqui
       </button>
       <AddButton type="square" />

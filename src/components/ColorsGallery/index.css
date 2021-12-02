@@ -23,3 +23,7 @@
 .colors .color:last-of-type {
   margin-right: 5px;
 }
+.colors .btnColors{
+  background-color: transparent;
+  border: transparent;
+}
