@@ -14,7 +14,7 @@ import logo from '../../images/logo.png';
 import './index.css';
 
 export const Header: FC = () => {
-  const { username, email } = useContext(UserContext);
+  const { username } = useContext(UserContext);
   const { token } = useContext(LoginContext);
   const [hideMenu, setHideMenu] = useState(true);
   const menuRef = useRef(null);
@@ -25,6 +25,13 @@ export const Header: FC = () => {
     setHideMenu(outsideClick);
   });
 
+  const logout = () => {
+    Logout(token);
+
+    if (localStorage.getItem(token) == null) {
+      navigate('/login');
+    }
+  };
   return (
     <header className="header">
       <Link to="/MyHome">
@@ -56,14 +63,7 @@ export const Header: FC = () => {
             <button
               className="sair"
               type="button"
-              onClick={() => {
-                Logout(token, email);
-
-                const logout = () => localStorage.getItem(token) == null;
-                if (logout()) {
-                  navigate('/login');
-                }
-              }}
+              onClick={logout}
             >
               Sair
             </button>

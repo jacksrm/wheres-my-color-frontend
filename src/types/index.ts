@@ -44,3 +44,8 @@ export interface IUserWithPalettes {
   createdAt: string;
   palettes: IPalette[];
 }
+export interface AuthContextData {
+  signed: boolean;
+  token: string;
+  user: object;
+}

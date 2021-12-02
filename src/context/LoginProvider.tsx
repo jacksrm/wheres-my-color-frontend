@@ -12,12 +12,7 @@ export const LoginProvider: FC = ({ children }) => {
 
   const logIn = async ({ email, password }: ILoginData) => {
     const response = await wmcApi.post('login', { email, password });
-    save('email', email);
-    save('password', password);
     setToken(response.data.token);
-
-    console.log(localStorage.getItem(email));
-    console.log(localStorage.getItem(password));
   };
   save('token', token);
 
