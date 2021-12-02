@@ -3,6 +3,7 @@
   display: flex;
   margin-bottom: 32px;
   flex-wrap: wrap;
+  width: 80vw;
 }
 
 .colors .color {
@@ -17,10 +18,14 @@
   transform: scale(1.05);
 }
 
-.colors .color:first-of-type {
+.colors .color:first-child {
   margin-left: 10px;
 }
 
-.colors .color:last-of-type {
+.colors .color:last-child {
   margin-right: 10px;
+}
+
+.center {
+  justify-content: center;
 }

@@ -1,5 +1,5 @@
 import {
-  FC, useContext, useEffect, useState,
+  FC, useContext, useState,
 } from 'react';
 import { Link } from 'react-router-dom';
 import { FiTrash2, FiEdit, FiXSquare } from 'react-icons/fi';
@@ -30,15 +30,11 @@ export const PalettePreview: FC<IPalettePreviewProps> = ({
 
   const [edit, setEdit] = useState(false);
 
-  useEffect(() => {
-    console.log(showEdit);
-  }, []);
-
   return (
     <section className="palette-preview">
       <div className="controls">
         {edit ? (
-          <EditPalette />
+          <EditPalette actionAfter={() => setEdit(false)} />
         ) : (
           <Link to={`/palette/${paletteId}`}>{title}</Link>
         )}

@@ -75,10 +75,18 @@ export interface IUserContext {
   palettes: IPalette[];
   addPalette: (data: IAddPaletteData) => void;
   removePalette: (data: IRemovePalette) => void;
-  getUserPalettes: () => void
+  getUserPalettes: () => void;
 }
 
+export interface IEditPalette {
+  name?: string;
+  isPublic?: boolean;
+  membersId?: string[];
+  authorizeChange?: string[];
+  paletteId: string;
+}
 export interface IPaletteContext {
-  palette: IPalette,
-  addColor: (data: IAddColor) => Promise<void>
+  palette: IPalette;
+  addColor: (data: IAddColor) => Promise<void>;
+  editPalette: (data: IEditPalette) => Promise<void>;
 }

@@ -70,7 +70,7 @@ export const Palette: FC = () => {
       <GoBack />
       <h1 className="palette-name">{palette.name}</h1>
       <PaletteProvider palette={palette}>
-        <ColorsGallery />
+        <ColorsGallery center />
       </PaletteProvider>
     </main>
   );

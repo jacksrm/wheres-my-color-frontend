@@ -5,17 +5,28 @@ import { FiCheck } from 'react-icons/fi';
 
 import { PaletteContext } from '../../context/PaletteProvider';
 
+import { Loading } from '../Loading';
+
 import './index.css';
 
-export const EditPalette: FC = () => {
-  const { palette: { name } } = useContext(PaletteContext);
+interface IEditPalette {
+  actionAfter: () => void;
+}
+
+export const EditPalette: FC<IEditPalette> = ({ actionAfter }) => {
+  const { palette: { name, _id: paletteId }, editPalette } = useContext(PaletteContext);
   const titleInputRef = useRef<HTMLInputElement | null>(null);
 
   const [paletteName, setPaletteName] = useState(name);
-
+  const [loading, setLoading] = useState(false);
   const handleSubmit = (ev: FormEvent<HTMLFormElement>) => {
     ev.preventDefault();
-    console.log(paletteName);
+    setLoading(true);
+    editPalette({ name: paletteName, paletteId })
+      .then(() => {
+        setLoading(false);
+        actionAfter();
+      });
   };
 
   return (
@@ -34,9 +45,13 @@ export const EditPalette: FC = () => {
           }
         }}
       />
-      <button type="submit">
-        <FiCheck />
-      </button>
+      {loading ? (
+        <Loading customSize={25} size={50} />
+      ) : (
+        <button type="submit">
+          <FiCheck />
+        </button>
+      )}
     </form>
   );
 };
