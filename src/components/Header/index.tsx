@@ -15,7 +15,6 @@ import './index.css';
 
 export const Header: FC = () => {
   const { username } = useContext(UserContext);
-  const { token } = useContext(LoginContext);
   const [hideMenu, setHideMenu] = useState(true);
   const menuRef = useRef(null);
 
@@ -26,10 +25,11 @@ export const Header: FC = () => {
   });
 
   const logout = () => {
-    Logout(token);
+    Logout('token');
 
-    if (localStorage.getItem(token) == null) {
+    if (localStorage.getItem('token') == null) {
       navigate('/login');
+      document.location.reload();
     }
   };
   return (
