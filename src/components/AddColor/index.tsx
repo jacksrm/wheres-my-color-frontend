@@ -21,8 +21,10 @@ export const AddColor: FC<{ afterAction: () => void }> = ({
   const generateValues = () => {
     const colorSplit = color.substring(1).match(/.{2}/g);
 
-    const rgbArr = colorSplit!.map((char) => parseInt(char, 16));
-    const rgb = rgbArr?.reduce((acc, num) => `${acc}${num}, `, '');
+    const rgbArr = colorSplit
+      ? colorSplit.map((char) => parseInt(char, 16))
+      : [0, 0, 0];
+    const rgb = rgbArr.reduce((acc, num) => `${acc}${num}, `, '');
 
     return {
       hex: color,
