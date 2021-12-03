@@ -41,10 +41,20 @@ export const Header: FC = () => {
         </Link>
 
         <h1>WHERE’S MY COLOR?</h1>
-
-        <Button onClick={() => setHideMenu(false)}>
-          <ImageProfile />
-        </Button>
+        {username ? (
+          <Button onClick={() => setHideMenu(false)}>
+            <ImageProfile />
+          </Button>
+        ) : (
+          <div className="navigate">
+            <Link to="/login">
+              Login
+            </Link>
+            <Link className="btn-register" to="/create">
+              Cadastro
+            </Link>
+          </div>
+        )}
 
         <div
           ref={menuRef}
