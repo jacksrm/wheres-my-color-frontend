@@ -99,4 +99,5 @@ export interface IPaletteContext {
   palette: IPalette;
   addColor: (data: IAddColor) => Promise<void>;
   editPalette: (data: IEditPalette) => Promise<void>;
+  removeColor: (data: IRemoveColor) => Promise<void>;
 }

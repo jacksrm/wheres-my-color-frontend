@@ -9,14 +9,18 @@ import { PaletteContext } from '../../context/PaletteProvider';
 import './index.css';
 
 interface IColorProps {
-    values: {
-        hex: string,
-        rgb: string
-    }
+  values: {
+    hex: string;
+    rgb: string;
+  };
+
+  colorId: string;
 }
 
-export const Color: FC<IColorProps> = ({ children, values }) => {
+export const Color: FC<IColorProps> = ({ children, values, colorId }) => {
   const [show, setShow] = useState(false);
+
+  const { removeColor, palette: { _id: paletteId } } = useContext(PaletteContext);
   const colorRef = useRef(null);
 
   useCheckRightClick(colorRef, (click) => {
@@ -36,9 +40,29 @@ export const Color: FC<IColorProps> = ({ children, values }) => {
       {children}
       {show && (
         <div className="contextMenu">
-          <button type="button" className="btn" onClick={() => copy(values.hex)}>HEX</button>
-          <button type="button" className="btn" onClick={() => copy(values.rgb)}>RGB</button>
-          <button type="button" className="btn remove">Excluir</button>
+          <button
+            type="button"
+            className="btn"
+            onClick={() => copy(values.hex)}
+          >
+            HEX
+          </button>
+          <button
+            type="button"
+            className="btn"
+            onClick={() => copy(values.rgb)}
+          >
+            RGB
+          </button>
+          <button
+            type="button"
+            className="btn remove"
+            onClick={() => {
+              removeColor({ colorId, paletteId });
+            }}
+          >
+            Excluir
+          </button>
         </div>
       )}
     </div>

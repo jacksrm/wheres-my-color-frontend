@@ -29,7 +29,7 @@ export const ColorsGallery: FC<IColorsGalleryProps> = ({ add, center }) => {
   return (
     <div className={`colors ${center && 'center'}`}>
       {(colors ?? []).map(({ values, _id }) => (
-        <Color values={values}>
+        <Color colorId={_id} values={values}>
           {notifyColor()}
           <button
             type="button"
