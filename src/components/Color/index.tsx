@@ -2,12 +2,14 @@ import {
   FC, useRef, useState, useContext,
 } from 'react';
 import copy from 'clipboard-copy';
+import { useParams } from 'react-router-dom';
 
 import { useCheckRightClick } from '../../hooks/useCheckRightClick';
 import { useCheckCLickOutside } from '../../hooks/useCheckCLickOutside';
 
 import { PaletteContext } from '../../context/PaletteProvider';
 import { LoginContext } from '../../context/LoginProvider';
+import { UserContext } from '../../context/UserProvider';
 
 import { Loading } from '../Loading';
 
@@ -32,7 +34,9 @@ export const Color: FC<IColorProps> = ({
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const { username } = useParams();
   const { token } = useContext(LoginContext);
+  const { username: loggedUsername } = useContext(UserContext);
   const {
     removeColor,
     palette: { _id: paletteId },
@@ -81,7 +85,7 @@ export const Color: FC<IColorProps> = ({
           {loading ? (
             <Loading size={50} customSize={30} />
           ) : (
-            !!token && (
+            (loggedUsername === username) && (
               <button
                 type="button"
                 className="btn remove"
