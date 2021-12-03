@@ -38,7 +38,7 @@ export const PaletteProvider: FC<IPaletteProvider> = ({
 
   const removeColor = useCallback(
     async ({ paletteId, colorId }: IRemoveColor) => {
-      const { status } = await wmcApi.delete(`/color/${paletteId}/${colorId}`, {
+      const { status } = await wmcApi.delete(`/color/delete/${paletteId}/${colorId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

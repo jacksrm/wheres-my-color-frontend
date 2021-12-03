@@ -1,32 +1,44 @@
 .contextMenu {
-    position: absolute;
-    background: whitesmoke;
-    width: 110px;
-    border-radius: 6px;
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.8);
-    color: #888;
-    flex-direction: column;
+  position: absolute;
+  background: whitesmoke;
+  width: 110px;
+  border-radius: 6px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.8);
+  color: #888;
+  flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-    transition: visibility 0.4s;
+  transition: visibility 0.4s;
 }
 .contextMenu .btn {
-    background: none;
-    border: none;
-    padding: 5px 5px;
-    text-align: center;
-    font-size: 1rem;
-    transition: all 0.2s;
-    width: 100%;
-    color: #888;
-    cursor: pointer;
+  background: none;
+  border: none;
+  padding: 5px 5px;
+  text-align: center;
+  font-size: 1rem;
+  transition: all 0.2s;
+  width: 100%;
+  color: #888;
+  cursor: pointer;
 }
+
+.contextMenu .btn:first-child {
+  border-radius: 6px 6px 0 0;
+}
+
+.contextMenu .btn:last-child {
+  border-radius: 0 0 6px 6px;
+}
+
 .contextMenu .btn:hover,
-.contextMenu .btn:focus  {
+.contextMenu .btn:focus {
   background: #1567e3;
   color: whitesmoke;
 }
 .contextMenu .remove:hover,
-.contextMenu .remove:focus  {
+.contextMenu .remove:focus {
   background: #ff5959;
   color: whitesmoke;
 }
