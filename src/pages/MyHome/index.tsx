@@ -48,7 +48,6 @@ export const MyHome: FC = () => {
       wmcApi
         .get('')
         .then(({ data }) => {
-          console.log(username, data);
           const tmp = data.find(
             (user: IUserWithPalettes) => user.username === username,
           );
@@ -84,12 +83,11 @@ export const MyHome: FC = () => {
         </section>
       );
     }
-    console.log(displayUser);
     return (
       <section className="palettes">
         <ul>
           {displayUser.palettes.map((palette) => (
-            <PaletteProvider palette={palette}>
+            <PaletteProvider key={palette._id} palette={palette}>
               <PalettePreview
                 showAdd={loggedUsername === username}
                 showEdit={loggedUsername === username}

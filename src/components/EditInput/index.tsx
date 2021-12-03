@@ -1,8 +1,7 @@
 import {
-  ChangeEvent, MouseEvent, useEffect, useRef, useState,
+  ChangeEvent, FC, useEffect, useRef, useState,
 } from 'react';
 import { FiEdit } from 'react-icons/fi';
-import { FaRocket } from 'react-icons/fa';
 
 import './index.css';
 
@@ -12,16 +11,15 @@ interface IEditInput {
   type: string;
   value: string;
   onChange: (ev: ChangeEvent<HTMLInputElement>) => void;
-  // onClick: (ev: MouseEvent<HTMLButtonElement>) => void
 }
 
-export const EditInput = ({
+export const EditInput: FC<IEditInput> = ({
   placeholder,
   required,
   type,
   value,
   onChange,
-}: IEditInput) => {
+}) => {
   const [edit, setEdit] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>(null);

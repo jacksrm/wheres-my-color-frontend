@@ -6,7 +6,7 @@ import { Login } from './pages/Login';
 import { Account } from './pages/Account';
 import { Home } from './pages/Home';
 import { MyHome } from './pages/MyHome';
-import { Test } from './pages/Test';
+import { NotFound } from './pages/NotFound';
 import { Palette } from './pages/Palette';
 
 export const App: FC = () => (
@@ -16,8 +16,8 @@ export const App: FC = () => (
     <Route path="/login" element={<Login />} />
     <Route path="/Account" element={<Account />} />
     <Route path="/Home" element={<Home />} />
-    <Route path="/palette/:paletteId" element={<Palette />} />
     <Route path="/:username" element={<MyHome />} />
-    <Route path="*" element={<Test />} />
+    <Route path="/:username/palette/:paletteId" element={<Palette />} />
+    <Route path="*" element={<NotFound />} />
   </Routes>
 );

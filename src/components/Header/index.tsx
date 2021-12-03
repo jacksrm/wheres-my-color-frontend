@@ -7,6 +7,7 @@ import { UserContext } from '../../context/UserProvider';
 import { ImageProfile } from '../ImageProfile';
 import { useCheckCLickOutside } from '../../hooks/useCheckCLickOutside';
 import { Logout } from '../../utils/Logout';
+import { SearchBar } from '../SearchBar';
 
 import logo from '../../images/logo.png';
 
@@ -32,43 +33,57 @@ export const Header: FC = () => {
     }
   };
   return (
-    <header className="header">
-      <Link to={`/${username}`}>
-        <img src={logo} alt="logo" />
-      </Link>
+    <header className="header-main">
+      <div className="header">
 
-      <h1>WHERE’S MY COLOR?</h1>
+        <Link to={`/${username}`}>
+          <img src={logo} alt="logo" />
+        </Link>
 
-      <Button onClick={() => setHideMenu(false)}>
-        <ImageProfile />
-      </Button>
+        <h1>WHERE’S MY COLOR?</h1>
+        {username ? (
+          <Button onClick={() => setHideMenu(false)}>
+            <ImageProfile />
+          </Button>
+        ) : (
+          <div className="navigate">
+            <Link to="/login">
+              Login
+            </Link>
+            <Link className="btn-register" to="/create">
+              Cadastro
+            </Link>
+          </div>
+        )}
 
-      <div
-        ref={menuRef}
-        style={{ visibility: hideMenu ? 'hidden' : 'visible' }}
-        id="menu"
-        className="menu"
-      >
-        <p className="nameUser">
-          Olá
-          {` ${username}`}
-        </p>
+        <div
+          ref={menuRef}
+          style={{ visibility: hideMenu ? 'hidden' : 'visible' }}
+          id="menu"
+          className="menu"
+        >
+          <p className="nameUser">
+            Olá
+            {` ${username}`}
+          </p>
 
-        <ul>
-          <li>
-            <Link to="/Account">Configurações</Link>
-          </li>
-          <li>
-            <button
-              className="sair"
-              type="button"
-              onClick={logout}
-            >
-              Sair
-            </button>
-          </li>
-        </ul>
+          <ul>
+            <li>
+              <Link to="/Account">Configurações</Link>
+            </li>
+            <li>
+              <button
+                className="sair"
+                type="button"
+                onClick={logout}
+              >
+                Sair
+              </button>
+            </li>
+          </ul>
+        </div>
       </div>
+      <SearchBar />
     </header>
   );
 };

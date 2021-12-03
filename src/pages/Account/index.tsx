@@ -7,11 +7,13 @@ import {
 } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Loading } from 'components/Loading';
+import { Logout } from 'utils/Logout';
 import { wmcApi } from '../../api';
 
 import { UserContext } from '../../context/UserProvider';
 
+import { SuccessMessage } from '../../components/SuccessMessage';
+import { Loading } from '../../components/Loading';
 import { ImageProfile } from '../../components/ImageProfile';
 import { ButtonCustom } from '../../components/Buttons';
 import { EditInput } from '../../components/EditInput';
@@ -19,13 +21,11 @@ import { GoBack } from '../../components/GoBack';
 
 import { LoginContext } from '../../context/LoginProvider';
 
-import AnimationShake from '../../images/AnimationShake.png';
-
 import './index.css';
 
 export const Account: FC = () => {
   const { email, username, userId } = useContext(UserContext);
-  const { token } = useContext(LoginContext);
+  const { token, logOut } = useContext(LoginContext);
   const navigate = useNavigate();
 
   const [editEmail, setEditEmail] = useState(email);
@@ -65,9 +65,10 @@ export const Account: FC = () => {
         .then(({ data: responseData }) => {
           setSuccess(true);
           setMessage(responseData.message);
-        })
-        .catch((err) => {
-          console.log(err.response.message);
+          Logout(token).then(() => {
+            logOut();
+            navigate('/login');
+          });
         })
         .finally(() => setLoading(false));
     }
@@ -80,10 +81,7 @@ export const Account: FC = () => {
         <ImageProfile />
         <h2 className="title">Configurações</h2>
         {success && (
-          <div className="success">
-            <img src={AnimationShake} alt="animation success" />
-            <p>{message}</p>
-          </div>
+          <SuccessMessage animation="ripple" message={message} />
         )}
         <form onSubmit={handleSubmit}>
           <EditInput

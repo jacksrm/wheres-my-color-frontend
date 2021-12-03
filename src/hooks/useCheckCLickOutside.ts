@@ -1,6 +1,11 @@
 import { MutableRefObject, useEffect } from 'react';
 
-export const useCheckCLickOutside = (
+type TUseCheckClickOutside = (
+  ref: MutableRefObject<HTMLElement | null>,
+  callback: (outsideClick: boolean) => void,
+) => void;
+
+export const useCheckCLickOutside: TUseCheckClickOutside = (
   ref: MutableRefObject<HTMLElement | null>,
   callback: (outsideClick: boolean) => void,
 ) => {
@@ -13,10 +18,8 @@ export const useCheckCLickOutside = (
       }
     }
 
-    // Bind the event listener
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      // Unbind the event listener on clean up
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [ref, callback]);

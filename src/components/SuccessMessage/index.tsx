@@ -1,5 +1,5 @@
 import {
-  FC, PropsWithChildren, PropsWithoutRef, useEffect, useState,
+  FC, useEffect, useState,
 } from 'react';
 
 import AnimationShake from '../../images/AnimationShake.png';
