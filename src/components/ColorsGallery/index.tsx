@@ -1,10 +1,11 @@
 import { FC, useContext, useState } from 'react';
 import copy from 'clipboard-copy';
-import { SuccessMessage } from 'components/SuccessMessage';
 import { PaletteContext } from '../../context/PaletteProvider';
+import { SuccessMessage } from '../SuccessMessage';
 import { AddButton } from '../AddButton';
 import { OverlayContainer } from '../OverlayContainer';
 import { AddColor } from '../AddColor';
+import { Color } from '../Color';
 
 import './index.css';
 
@@ -17,7 +18,9 @@ export const ColorsGallery: FC<IColorsGalleryProps> = ({ add, center }) => {
   const [showAddColor, setShowAddColor] = useState(false);
   const [show, setShow] = useState(false);
 
-  const { palette: { colors } } = useContext(PaletteContext);
+  const {
+    palette: { colors },
+  } = useContext(PaletteContext);
 
   const notifyColor = () => {
     if (show) return <SuccessMessage message="Cor copiada com sucesso!" />;
@@ -27,7 +30,15 @@ export const ColorsGallery: FC<IColorsGalleryProps> = ({ add, center }) => {
   return (
     <div className={`colors ${center && 'center'}`}>
       {(colors ?? []).map(({ values, _id }) => (
-        <div key={_id}>
+        <Color
+          handleCopy={() => {
+            setShow(true);
+            setTimeout(() => setShow(false), 4500);
+          }}
+          key={_id}
+          colorId={_id}
+          values={values}
+        >
           {notifyColor()}
           <button
             type="button"
@@ -35,7 +46,7 @@ export const ColorsGallery: FC<IColorsGalleryProps> = ({ add, center }) => {
             onClick={() => {
               copy(values.hex);
               setShow(true);
-              setTimeout(() => setShow(false), 6000);
+              setTimeout(() => setShow(false), 4500);
             }}
           >
             <div
@@ -44,14 +55,9 @@ export const ColorsGallery: FC<IColorsGalleryProps> = ({ add, center }) => {
               className="color"
             />
           </button>
-        </div>
+        </Color>
       ))}
-      {add && (
-      <AddButton
-        onClick={() => setShowAddColor(true)}
-        type="square"
-      />
-      )}
+      {add && <AddButton onClick={() => setShowAddColor(true)} type="square" />}
       {showAddColor && (
         <OverlayContainer handle={() => setShowAddColor(false)}>
           <AddColor afterAction={() => setShowAddColor(false)} />

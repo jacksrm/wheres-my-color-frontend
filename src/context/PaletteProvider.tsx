@@ -5,7 +5,7 @@ import {
 import { wmcApi } from '../api';
 
 import {
-  IAddColor, IEditPalette, IPalette, IPaletteContext,
+  IAddColor, IRemoveColor, IEditPalette, IPalette, IPaletteContext,
 } from '../types';
 import { LoginContext } from './LoginProvider';
 import { UserContext } from './UserProvider';
@@ -36,6 +36,19 @@ export const PaletteProvider: FC<IPaletteProvider> = ({
     [getUserPalettes, token],
   );
 
+  const removeColor = useCallback(
+    async ({ paletteId, colorId }: IRemoveColor) => {
+      const { status } = await wmcApi.delete(`/color/delete/${paletteId}/${colorId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (status === 200) getUserPalettes();
+    },
+    [getUserPalettes, token],
+  );
+
   const editPalette = useCallback(
     async (data: IEditPalette) => {
       const { status } = await wmcApi.put(`/palette/${data.paletteId}`, data, {
@@ -52,9 +65,10 @@ export const PaletteProvider: FC<IPaletteProvider> = ({
     () => ({
       palette,
       addColor,
+      removeColor,
       editPalette,
     }),
-    [palette, addColor, editPalette],
+    [palette, addColor, removeColor, editPalette],
   );
 
   return (

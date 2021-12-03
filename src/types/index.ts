@@ -58,7 +58,10 @@ export interface IAddColor {
   };
   paletteId: string;
 }
-
+export interface IRemoveColor {
+  colorId: string;
+  paletteId: string;
+}
 export interface IUserWithPalettes {
   _id: string;
   username: string;
@@ -97,4 +100,5 @@ export interface IPaletteContext {
   palette: IPalette;
   addColor: (data: IAddColor) => Promise<void>;
   editPalette: (data: IEditPalette) => Promise<void>;
+  removeColor: (data: IRemoveColor) => Promise<void>;
 }
