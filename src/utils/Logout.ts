@@ -1,10 +1,11 @@
 import { remove } from './LocalStorage';
 
-export const Logout = async (token: string) => {
+type TLogoutFunc = (token: string) => Promise<void>;
+
+export const Logout: TLogoutFunc = async (token: string) => {
   const authenticated = () => localStorage.getItem(token) !== null;
 
   if (authenticated()) {
     remove(token);
-    console.log('logout successfully completed');
   }
 };

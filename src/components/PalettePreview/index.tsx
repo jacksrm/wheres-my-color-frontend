@@ -36,7 +36,7 @@ export const PalettePreview: FC<IPalettePreviewProps> = ({
         {edit ? (
           <EditPalette actionAfter={() => setEdit(false)} />
         ) : (
-          <Link to={`/palette/${paletteId}`}>{title}</Link>
+          <Link to={`palette/${paletteId}`}>{title}</Link>
         )}
 
         <div className="actions">

@@ -7,6 +7,7 @@ import { AxiosResponse, AxiosError } from 'axios';
 
 import { PaletteProvider } from 'context/PaletteProvider';
 import { LoginContext } from '../../context/LoginProvider';
+import { UserContext } from '../../context/UserProvider';
 
 import { Loading } from '../../components/Loading';
 import { ColorsGallery } from '../../components/ColorsGallery';
@@ -21,13 +22,14 @@ export const Palette: FC = () => {
   const [palette, setPalette] = useState<IPalette>({} as IPalette);
   const [loading, setLoading] = useState(false);
 
-  const { paletteId } = useParams();
+  const { paletteId, username } = useParams();
   const { token } = useContext(LoginContext);
+  const { username: loggedUsername } = useContext(UserContext);
   const navigate = useNavigate();
 
   useEffect(() => {
     setLoading(true);
-    if (token) {
+    if (username === loggedUsername) {
       wmcApi
         .get(`/palette/${paletteId}`, {
           headers: {
@@ -52,7 +54,7 @@ export const Palette: FC = () => {
         })
         .finally(() => setLoading(false));
     }
-  }, [paletteId, token, navigate]);
+  }, [paletteId, token, navigate, loggedUsername, username]);
 
   if (loading) {
     return (
@@ -63,7 +65,6 @@ export const Palette: FC = () => {
     );
   }
 
-  console.log(palette.colors);
   return (
     <main className="palette">
       <Header />

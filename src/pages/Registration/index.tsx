@@ -1,15 +1,12 @@
 import {
   FC, FormEvent, useState,
-  // FC, FormEvent, useContext, useState,
 } from 'react';
 import { wmcApi } from 'api';
 import { Link } from 'react-router-dom';
-// import { Link, useNavigate } from 'react-router-dom';
 import md5 from 'md5';
 
 import { AxiosResponse } from 'axios';
 import { SuccessMessage } from 'components/SuccessMessage';
-import { setServers } from 'dns';
 import { ButtonSimple, ButtonCustom } from '../../components/Buttons';
 
 import logo from '../../images/logo.png';
@@ -26,8 +23,6 @@ export const Registration: FC = () => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-  // const { logIn } = useContext(LoginContext);
-  // const navigate = useNavigate();
 
   const handleRegister = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

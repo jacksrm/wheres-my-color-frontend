@@ -114,6 +114,13 @@ export const UserProvider: FC = ({ children }) => {
     if (token) {
       getUserData();
       getUserPalettes();
+    } else {
+      setProfilePicture('');
+      setUserId('');
+      setEmail('');
+      setUsername('');
+      setCreatedAt('');
+      setPalettes([]);
     }
   }, [token, getUserData, getUserPalettes]);
 
