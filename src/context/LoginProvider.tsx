@@ -14,11 +14,17 @@ export const LoginProvider: FC = ({ children }) => {
     const response = await wmcApi.post('login', { email, password });
     setToken(response.data.token);
   };
+
+  const logOut = () => {
+    setToken('');
+  };
+
   save('token', token);
 
   const context = useMemo(() => ({
     token,
     logIn,
+    logOut,
   }), [token]);
 
   return (

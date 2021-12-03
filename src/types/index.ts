@@ -6,6 +6,7 @@ export interface ILoginData {
 export interface ILoginContext {
   token: string;
   logIn: (data: ILoginData) => Promise<void>;
+  logOut: () => void;
 }
 
 export interface IColors {
