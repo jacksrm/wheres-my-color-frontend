@@ -18,10 +18,10 @@ export const Initial: FC = () => (
             A melhor maneira de guardar as suas paletas de cores de forma rápida e
             prática.
           </p>
-          <Link to="/login">
+          <Link to="login">
             <ButtonCustom>LOGIN</ButtonCustom>
           </Link>
-          <Link to="/create">
+          <Link to="create">
             <ButtonSimple className="create">
               Não tem conta?
               {' '}

@@ -16,8 +16,8 @@ export const App: FC = () => (
     <Route path="/login" element={<Login />} />
     <Route path="/Account" element={<Account />} />
     <Route path="/Home" element={<Home />} />
-    <Route path="/palette/:paletteId" element={<Palette />} />
     <Route path="/:username" element={<MyHome />} />
+    <Route path="/:username/palette/:paletteId" element={<Palette />} />
     <Route path="*" element={<Test />} />
   </Routes>
 );

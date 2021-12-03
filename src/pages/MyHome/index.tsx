@@ -89,7 +89,7 @@ export const MyHome: FC = () => {
       <section className="palettes">
         <ul>
           {displayUser.palettes.map((palette) => (
-            <PaletteProvider palette={palette}>
+            <PaletteProvider key={palette._id} palette={palette}>
               <PalettePreview
                 showAdd={loggedUsername === username}
                 showEdit={loggedUsername === username}

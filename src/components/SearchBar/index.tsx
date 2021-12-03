@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import { FiSearch } from 'react-icons/fi';
+import { FaBackspace } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 import { IUserWithPalettes } from '../../types';
@@ -31,33 +31,43 @@ export const SearchBar: FC = () => {
         setLoading(false);
         setResults(filteredData);
       });
+    } else {
+      setResults([]);
     }
   }, [search]);
 
   return (
-    <div className="search-bar">
-      <form className="search-form">
+    <div className="search-area">
+      <div className="search-bar">
         <input
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           type="text"
         />
-        <button type="submit">
-          <FiSearch />
+        <button onClick={() => setSearch('')} type="button">
+          <FaBackspace />
         </button>
-      </form>
+      </div>
 
       <ul className="result-list">
         {loading ? (
           <Loading size={50} />
         ) : (
           results.map((user) => (
-            <li>
-              <Link to={`/${user.username}`} />
+            <li key={user._id}>
+              <Link
+                onClick={() => {
+                  setSearch('');
+                  setResults([]);
+                }}
+                to={`/${user.username}`}
+              >
+                {user.username}
+
+              </Link>
             </li>
           ))
         )}
-
       </ul>
     </div>
   );
