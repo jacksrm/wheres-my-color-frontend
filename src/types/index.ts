@@ -57,7 +57,10 @@ export interface IAddColor {
   };
   paletteId: string;
 }
-
+export interface IRemoveColor {
+  colorId: string;
+  paletteId: string;
+}
 export interface IUserWithPalettes {
   _id: string;
   username: string;

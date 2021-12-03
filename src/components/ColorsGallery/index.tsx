@@ -1,10 +1,13 @@
-import { FC, useContext, useState } from 'react';
+import {
+  FC, useContext, useState,
+} from 'react';
 import copy from 'clipboard-copy';
-import { SuccessMessage } from 'components/SuccessMessage';
 import { PaletteContext } from '../../context/PaletteProvider';
+import { SuccessMessage } from '../SuccessMessage';
 import { AddButton } from '../AddButton';
 import { OverlayContainer } from '../OverlayContainer';
 import { AddColor } from '../AddColor';
+import { Color } from '../Color';
 
 import './index.css';
 
@@ -16,7 +19,6 @@ interface IColorsGalleryProps {
 export const ColorsGallery: FC<IColorsGalleryProps> = ({ add, center }) => {
   const [showAddColor, setShowAddColor] = useState(false);
   const [show, setShow] = useState(false);
-
   const { palette: { colors } } = useContext(PaletteContext);
 
   const notifyColor = () => {
@@ -27,7 +29,7 @@ export const ColorsGallery: FC<IColorsGalleryProps> = ({ add, center }) => {
   return (
     <div className={`colors ${center && 'center'}`}>
       {(colors ?? []).map(({ values, _id }) => (
-        <div>
+        <Color values={values}>
           {notifyColor()}
           <button
             type="button"
@@ -44,7 +46,7 @@ export const ColorsGallery: FC<IColorsGalleryProps> = ({ add, center }) => {
               className="color"
             />
           </button>
-        </div>
+        </Color>
       ))}
       {add && (
       <AddButton

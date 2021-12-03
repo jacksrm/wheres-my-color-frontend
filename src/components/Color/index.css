@@ -1,0 +1,32 @@
+.contextMenu {
+    position: absolute;
+    background: whitesmoke;
+    width: 110px;
+    border-radius: 6px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.8);
+    color: #888;
+    flex-direction: column;
+
+    transition: visibility 0.4s;
+}
+.contextMenu .btn {
+    background: none;
+    border: none;
+    padding: 5px 5px;
+    text-align: center;
+    font-size: 1rem;
+    transition: all 0.2s;
+    width: 100%;
+    color: #888;
+    cursor: pointer;
+}
+.contextMenu .btn:hover,
+.contextMenu .btn:focus  {
+  background: #1567e3;
+  color: whitesmoke;
+}
+.contextMenu .remove:hover,
+.contextMenu .remove:focus  {
+  background: #ff5959;
+  color: whitesmoke;
+}
