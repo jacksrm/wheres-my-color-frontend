@@ -16,6 +16,8 @@
 
 .colors .color:hover {
   transform: scale(1.05);
+  position: relative;
+  z-index: 7000
 }
 
 .colors .color:first-child {

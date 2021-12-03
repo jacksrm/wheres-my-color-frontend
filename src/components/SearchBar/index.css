@@ -1,7 +1,7 @@
 .search-area {
   display: flex;
   flex-direction: column;
-  background-color: #7373737c;
+  background-color: #737373da;
   padding: 16px 0;
   align-items: center;
   transition: all 200ms;
@@ -42,4 +42,29 @@
 
 .search-area .search-bar button:active {
   transform: scale(0.95);
+}
+
+.search-area .result-list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+}
+
+.search-area .result-list li {
+  margin: 5px 0;
+}
+
+.search-area .result-list li:first-child {
+  margin-top: 16px;
+}
+
+.search-area .result-list li:last-child {
+  margin-bottom: 0;
+}
+
+.search-area .result-list li a {
+  font-size: 1.3rem;
+  color: whitesmoke;
+  text-decoration: none;
+
 }

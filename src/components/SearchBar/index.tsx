@@ -20,7 +20,7 @@ export const SearchBar: FC = () => {
 
   useEffect(() => {
     if (search) {
-      setLoading(false);
+      setLoading(true);
       wmcApi.get('/').then(({ data }) => {
         const filteredData = data.filter((user: IUserWithPalettes) => {
           const regex = new RegExp(search, 'i');
