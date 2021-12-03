@@ -7,6 +7,5 @@ export const Logout: TLogoutFunc = async (token: string) => {
 
   if (authenticated()) {
     remove(token);
-    console.log('logout successfully completed');
   }
 };

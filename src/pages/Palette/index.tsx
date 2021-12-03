@@ -65,7 +65,6 @@ export const Palette: FC = () => {
     );
   }
 
-  console.log(palette.colors);
   return (
     <main className="palette">
       <Header />

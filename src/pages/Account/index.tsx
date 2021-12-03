@@ -69,10 +69,6 @@ export const Account: FC = () => {
             logOut();
             navigate('/login');
           });
-          // ;
-        })
-        .catch((err) => {
-          console.log(err.response.message);
         })
         .finally(() => setLoading(false));
     }

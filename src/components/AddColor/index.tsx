@@ -37,7 +37,6 @@ export const AddColor: FC<{ afterAction: () => void }> = ({
     setLoading(true);
 
     const values = generateValues();
-    console.log(values);
     const data = {
       values,
       title,
