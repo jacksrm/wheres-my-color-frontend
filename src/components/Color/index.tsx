@@ -35,7 +35,6 @@ export const Color: FC<IColorProps> = ({
   const [loading, setLoading] = useState(false);
 
   const { username } = useParams();
-  const { token } = useContext(LoginContext);
   const { username: loggedUsername } = useContext(UserContext);
   const {
     removeColor,
